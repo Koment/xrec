@@ -1,0 +1,43 @@
+fields:
+    name:
+        label: 'Artist name'
+        span: full
+        type: text
+    description:
+        label: Description
+        size: ''
+        span: full
+        type: richeditor
+    poster:
+        label: 'Artist poster'
+        span: left
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        imageWidth: '150'
+        imageHeight: '150'
+        type: fileupload
+    genre:
+        label: 'Genre (coma separated)'
+        span: right
+        type: text
+    tracks:
+        label: 'Artist tracks'
+        mode: file
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: right
+        fileTypes: 'mp3,wav'
+        prompt: 'upload tracks'
+        type: fileupload
+    slug:
+        label: Slug
+        span: right
+        preset:
+            field: name
+            type: slug
+        type: text

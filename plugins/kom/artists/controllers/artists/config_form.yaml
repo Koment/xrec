@@ -1,0 +1,10 @@
+name: Artists
+modelClass: Kom\Artists\Models\Artist
+form: $/kom/artists/models/artist/artist_fields.yaml
+defaultRedirect: kom/artists/artists
+create:
+    redirect: 'kom/artists/artists/update/:id'
+    redirectClose: kom/artists/artists
+update:
+    redirect: kom/artists/artists
+    redirectClose: kom/artists/artists

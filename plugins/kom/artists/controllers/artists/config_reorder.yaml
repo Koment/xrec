@@ -1,0 +1,4 @@
+title: Artists
+modelClass: Kom\Artists\Models\Artist
+toolbar:
+    buttons: reorder_toolbar

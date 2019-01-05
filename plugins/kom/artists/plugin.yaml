@@ -1,0 +1,11 @@
+plugin:
+    name: 'kom.artists::lang.plugin.name'
+    description: 'kom.artists::lang.plugin.description'
+    author: Kom
+    icon: oc-icon-music
+    homepage: ''
+navigation:
+    artists-menu-item:
+        label: 'Add Artist'
+        url: kom/artists/artists
+        icon: icon-music
