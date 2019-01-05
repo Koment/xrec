@@ -1,0 +1,15 @@
+fields:
+    genre_name:
+        label: Genre
+        span: left
+        type: text
+    slug:
+        label: Slug
+        span: right
+        preset:
+            field: genre_name
+            type: slug
+        trigger:
+            action: ''
+            field: genre
+        type: text

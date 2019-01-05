@@ -9,3 +9,8 @@ navigation:
         label: 'Add Artist'
         url: kom/artists/artists
         icon: icon-music
+        sideMenu:
+            side-menu-item:
+                label: Genres
+                url: kom/artists/genres
+                icon: icon-tag

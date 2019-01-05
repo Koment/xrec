@@ -1,0 +1,4 @@
+title: Genres
+modelClass: Kom\Artists\Models\Genre
+toolbar:
+    buttons: reorder_toolbar

@@ -6,3 +6,21 @@
 1.0.3:
     - 'Updated table kom_artists_'
     - builder_table_update_kom_artists_.php
+1.0.4:
+    - 'Created table kom_artists_genre'
+    - builder_table_create_kom_artists_genre.php
+1.0.5:
+    - 'Created table kom_artists_genre_pivot'
+    - builder_table_create_kom_artists_genre_pivot.php
+1.0.6:
+    - 'Updated table kom_artists_'
+    - builder_table_update_kom_artists__2.php
+1.0.7:
+    - 'Updated table kom_artists_genre'
+    - builder_table_update_kom_artists_genre.php
+1.0.8:
+    - 'Updated table kom_artists_'
+    - builder_table_update_kom_artists__3.php
+1.0.9:
+    - 'Updated table kom_artists_'
+    - builder_table_update_kom_artists__4.php

@@ -4,8 +4,3 @@ columns:
         type: text
         searchable: true
         sortable: true
-    genre:
-        label: Genre
-        type: text
-        searchable: true
-        sortable: true

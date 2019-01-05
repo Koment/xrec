@@ -1,0 +1,29 @@
+title = "genres"
+url = "/genres/:slug"
+layout = "default"
+is_hidden = 0
+
+[builderDetails]
+modelClass = "Kom\Artists\Models\Genre"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "genre_name"
+notFoundMessage = "Record not found"
+==
+{% set record = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+{% if record %}
+
+    <h2>{{ record.genre_name }}</h2>
+
+    {% for artist in record.artists %}
+
+      <a href="/artist/{{ artist.slug }}">{{ artist.name }}</a>
+
+    {% endfor %}
+
+{% else %}
+    {{ notFoundMessage }}
+{% endif %}

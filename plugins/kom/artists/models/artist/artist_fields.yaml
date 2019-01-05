@@ -19,10 +19,6 @@ fields:
         imageWidth: '150'
         imageHeight: '150'
         type: fileupload
-    genre:
-        label: 'Genre (coma separated)'
-        span: right
-        type: text
     tracks:
         label: 'Artist tracks'
         mode: file
@@ -34,6 +30,12 @@ fields:
         fileTypes: 'mp3,wav'
         prompt: 'upload tracks'
         type: fileupload
+    genres:
+        label: Genres
+        nameFrom: genre_name
+        descriptionFrom: description
+        span: auto
+        type: relation
     slug:
         label: Slug
         span: right
@@ -41,3 +43,22 @@ fields:
             field: name
             type: slug
         type: text
+    consist:
+        label: 'Состав:'
+        prompt: 'Add new item'
+        span: auto
+        type: repeater
+        form:
+            fields:
+                musicman_name:
+                    label: Имя
+                    span: auto
+                    type: text
+                musicman_age:
+                    label: Возраст
+                    span: auto
+                    type: text
+                musicman_inst:
+                    label: Позиция
+                    span: auto
+                    type: text

@@ -27,7 +27,18 @@ class Artist extends Model
     public $rules = [
     ];
 
+    protected $jsonable = ['consist'];
+
     /* Relations */
+
+    public $belongsToMany = [
+      'genres' => [
+        'Kom\Artists\Models\Genre',
+        'table' => 'kom_artists_genre_pivot',
+        'order' => 'genre_name'
+      ]
+
+    ];
 
     public $attachOne = [
 

@@ -1,0 +1,11 @@
+name: Genres
+modelClass: Kom\Artists\Models\Genre
+form: $/kom/artists/models/genre/genre_fields.yaml
+defaultRedirect: kom/artists/genres
+create:
+    redirect: 'kom/artists/genres/update/:id'
+    redirectClose: kom/artists/genres
+update:
+    redirect: kom/artists/genres
+    redirectClose: kom/artists/genres
+preview: {  }
