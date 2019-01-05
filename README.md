@@ -1,2 +1,0 @@
-# xrec
-studio-site
