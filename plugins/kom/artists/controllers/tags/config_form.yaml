@@ -1,0 +1,10 @@
+name: Tags
+modelClass: Kom\Artists\Models\Tag
+form: $/kom/artists/models/tag/tags_fields.yaml
+defaultRedirect: kom/artists/tags
+create:
+    redirect: 'kom/artists/tags/update/:id'
+    redirectClose: kom/artists/tags
+update:
+    redirect: kom/artists/tags
+    redirectClose: kom/artists/tags

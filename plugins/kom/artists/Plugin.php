@@ -8,6 +8,20 @@ class Plugin extends PluginBase
     {
     }
 
+    public function registerFormWidgets()
+    {
+      return [
+
+          'Kom\Artists\FormWidgets\TagBox' => [
+
+              'lable' => 'Tags field',
+              'code' => 'tagbox'
+
+          ]
+
+      ];
+    }
+
     public function registerSettings()
     {
     }

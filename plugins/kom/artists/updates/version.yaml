@@ -24,3 +24,12 @@
 1.0.9:
     - 'Updated table kom_artists_'
     - builder_table_update_kom_artists__4.php
+1.0.10:
+    - 'Created table kom_artists_tags'
+    - builder_table_create_kom_artists_tags.php
+1.0.11:
+    - 'Updated table kom_artists_tags'
+    - builder_table_update_kom_artists_tags.php
+1.0.12:
+    - 'Created table kom_artists_tags_pivot'
+    - builder_table_create_kom_artists_tags_pivot.php

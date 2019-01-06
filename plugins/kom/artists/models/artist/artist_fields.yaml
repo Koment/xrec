@@ -62,3 +62,8 @@ fields:
                     label: Позиция
                     span: auto
                     type: text
+
+    tags:
+      label: 'Tags'
+      span: left
+      type: tagbox

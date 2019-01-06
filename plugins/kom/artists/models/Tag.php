@@ -5,7 +5,7 @@ use Model;
 /**
  * Model
  */
-class Artist extends Model
+class Tag extends Model
 {
     use \October\Rain\Database\Traits\Validation;
 
@@ -19,7 +19,7 @@ class Artist extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'kom_artists_';
+    public $table = 'kom_artists_tags';
 
     /**
      * @var array Validation rules
@@ -27,34 +27,19 @@ class Artist extends Model
     public $rules = [
     ];
 
-    protected $jsonable = ['consist'];
 
     /* Relations */
 
     public $belongsToMany = [
-      'genres' => [
-        'Kom\Artists\Models\Genre',
-        'table' => 'kom_artists_genre_pivot',
-        'order' => 'genre_name'
-      ],
 
-      'tags' => [
-        'Kom\Artists\Models\Tag',
+      'artists' => [
+        'Kom\Artists\Models\Artist',
         'table' => 'kom_artists_tags_pivot',
-        'order' => 'tag'
+        'order' => 'name'
+
       ],
 
     ];
 
-    public $attachOne = [
 
-      'poster' => 'System\Models\File'
-
-    ];
-
-    public $attachMany = [
-
-      'tracks' => 'System\Models\File'
-
-    ];
 }

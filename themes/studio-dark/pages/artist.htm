@@ -55,7 +55,13 @@ notFoundMessage = "Record not found"
 
     </ul>
 
+    <h4>Tags</h4>
 
+    {% for tag in record.tags %}
+
+      <a href="/tags/{{ tag.slug }}">{{ tag.tag }}</a>
+      
+    {% endfor %}
 
 {% else %}
     {{ notFoundMessage }}

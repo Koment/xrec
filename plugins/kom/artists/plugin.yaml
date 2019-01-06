@@ -14,3 +14,7 @@ navigation:
                 label: Genres
                 url: kom/artists/genres
                 icon: icon-tag
+            side-menu-item2:
+                label: Tags
+                url: kom/artists/tags
+                icon: icon-tags
