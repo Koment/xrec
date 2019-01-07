@@ -55,6 +55,37 @@ class TagBox extends FormWidgetBase
 
     }
 
+    public function getSaveValue($tags){
+
+      $newArray = [];
+
+      foreach ($tags as $tagID) {
+
+        if(!is_numeric($tagID)){
+
+          $newTag = new Tag;
+
+          $newTag->tag = $tagID;
+
+          $newTag->slug = str_slug($tagID, "-");
+
+          // dd($newTag);
+
+          $newTag->save();
+
+          $newArray[] = $newTag->id;
+
+        } else {
+
+          $newArray[] = $tagID;
+
+        }
+
+      }
+
+      return $newArray;
+    }
+
     public function loadAssets(){
 
       $this->addCss('css\select2.css');
