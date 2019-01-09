@@ -1,0 +1,226 @@
+title = "artist"
+url = "/artist/:slug"
+layout = "studio-dark"
+is_hidden = 0
+
+[builderDetails]
+modelClass = "Kom\Artists\Models\Artist"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "name"
+notFoundMessage = "Record not found"
+==
+{% set record = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+
+{% partial 'sections/banner.htm' %}
+
+{% if record %}
+
+
+
+    <h2>{{ record.name }}</h2>
+    <h4>{% for genre in record.genres %}
+
+          <a href="/genres/{{ genre.slug }}">{{ genre.genre_name }}</a>
+
+        {% endfor %}
+    </h4>
+
+    {% if record.consist %}
+      Состав группы:
+      <ul>
+        <li>Имя
+            Возраст
+            Позиция</li>
+        {% for musicman in record.consist %}
+
+          <li>{{ musicman.musicman_name }}
+          {{ musicman.musicman_age }}
+          {{ musicman.musicman_inst }}</li>
+
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {{ record.description|raw }}
+
+    <ul>
+
+        {% for track in record.tracks %}
+
+          <li>{{ track.getFileName() }} - {{ track.path }}</li>
+
+        {% endfor %}
+
+    </ul>
+
+    <h4>Tags</h4>
+
+    {% for tag in record.tags %}
+
+      <a href="/tags/{{ tag.slug }}">{{ tag.tag }}</a>
+
+    {% endfor %}
+
+
+
+
+<div class="main-content pdt40 pdb90">
+    <div class="container">
+        <div class="album-detail">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="image">
+                        <img src="{{ record.poster.thumb(400, auto) }}" alt="{{ record.name }}" class="img-responsive">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="album-detail-text">
+                        <center><h3>Инфо</h3></center>
+                        <ul>
+                            <li>Исполнитель<span class="pull-right">{{ record.name }}</span></li>
+                            <li>Жанр<span class="pull-right">
+
+                              {% for genre in record.genres %}
+
+                                <a href="/genres/{{ genre.slug }}">{{ genre.genre_name }}</a>
+
+                              {% endfor %}
+
+                            </span></li>
+                            <!-- <li>Зарегистрирован<span class="pull-right">09 Августа 2014</span></li> -->
+                            <li>Лейбл<span class="pull-right">X-Records</span></li>
+                        </ul>
+                        <div class="album-detail-button" style="text-align: center;">
+                            <a href="#" class="musica-button-two">ВКонтач</a>
+                            <a href="#" class="musica-button-two">Cwitter</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <audio id="player" controls>
+
+          {% for track in record.tracks %}
+
+            <source src="{{ track.path }}" type="audio/mp3">
+
+          {% endfor %}
+
+        </audio>
+
+        <div class="album-detail-audio-player">
+            <div class="musica-audio-player">
+                <div id="musica-audio-player-container" class="jp-video" role="application" aria-label="media player">
+                    <div id="tr-player"></div>
+                    <div class="jp-type-playlist">
+                        <div class="audio-table">
+                            <div class="jp-controls">
+                                <button class="jp-previous"></button>
+                                <button class="jp-play"></button>
+                                <button class="jp-next"></button>
+                                <button class="jp-stop"></button>
+                            </div>
+                            <div class="jp-toggles">
+                                <button class="jp-repeat">Повторение</button>
+                                <button class="jp-shuffle">Перемешать</button>
+                                <button class="jp-full-screen">На весь экран</button>
+                            </div>
+                            <div class="jp-gui">
+                                <div class="jp-video-play">
+                                    <button class="jp-video-play-icon"></button>
+                                </div>
+                                <div class="jp-interface">
+                                    <div class="jp-progress">
+                                        <div class="jp-seek-bar">
+                                            <div class="jp-play-bar"></div>
+                                        </div>
+                                    </div>
+                                    <div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
+                                    <div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+                                    <button class="audio-playlist">...</button>
+                                </div>
+
+                            </div>
+                            <div class="jp-volume-controls">
+                                <button class="jp-mute"></button>
+                                <button class="jp-volume-max"></button>
+                                <div class="jp-volume-bar">
+                                    <div class="jp-volume-bar-value"></div>
+                                </div>
+                            </div>
+                            <div class="jp-details">
+                                <div class="jp-title" aria-label="title">&nbsp;</div>
+                            </div><!--/title-->
+                            <div id="musica-jquery-jplayer" class="jp-jplayer"></div>
+                        </div>
+                        <div class="audio-playlist-wrapper">
+                            <div id="playlist-wrapper">
+                                <div class="jp-playlist">
+                                    <ul>
+                                        <li>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-heading text-center">
+                    <h2>Другие исполнители</h2>
+                </div>
+            </div>
+
+
+           <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="album-item">
+                    <a href="../../artists/delfina/artist.html">
+                        <img src="../../artists/delfina/images/image.jpg" class="img-responsive" alt="Дельфина">
+                        <div class="overlay base-gradient-bg"></div>
+                        <h3 class="heading">Дельфина</h3>
+                        <span class="sub-heading">Рэп, Поп, Рок, Джаз</span>
+                    </a>
+      </div><!--/.album-item-->
+            </div>
+
+
+    <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="album-item">
+                    <a href="../../artists/nikita-kit/artist.html">
+                        <img src="../../artists/nikita-kit/images/image.jpg" class="img-responsive" alt="Никита КИТ">
+                        <div class="overlay base-gradient-bg"></div>
+                        <h3 class="heading">Никита КИТ</h3>
+                        <span class="sub-heading">Рэп</span>
+                    </a>
+      </div><!--/.album-item-->
+            </div>
+
+
+    <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="album-item">
+                    <a href="../../artists/ali/artist.html">
+                        <img src="../../artists/ali/images/image.jpg" class="img-responsive" alt="Али a.k.a V9">
+                        <div class="overlay base-gradient-bg"></div>
+                        <h3 class="heading">Али a.k.a V9</h3>
+                        <span class="sub-heading">Рэп</span>
+                    </a>
+      </div><!--/.album-item-->
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+{% else %}
+    {{ notFoundMessage }}
+{% endif %}

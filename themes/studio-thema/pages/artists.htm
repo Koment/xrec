@@ -1,0 +1,96 @@
+title = "Исполнители"
+url = "/artists/:page?"
+layout = "studio-dark"
+is_hidden = 0
+
+[builderList]
+modelClass = "Kom\Artists\Models\Artist"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "name"
+noRecordsMessage = "No records found"
+detailsPage = "artist"
+detailsKeyColumn = "slug"
+detailsUrlParameter = "slug"
+recordsPerPage = 9
+pageNumber = "{{ :page }}"
+==
+{% set records = builderList.records %}
+{% set displayColumn = builderList.displayColumn %}
+{% set noRecordsMessage = builderList.noRecordsMessage %}
+{% set detailsPage = builderList.detailsPage %}
+{% set detailsKeyColumn = builderList.detailsKeyColumn %}
+{% set detailsUrlParameter = builderList.detailsUrlParameter %}
+
+
+{% partial 'sections/banner.htm' %}
+
+
+<div class="main-content pdt40 pdb90">
+    <div class="container">
+        <div class="row row-eq-height">
+
+            {% for record in records %}
+
+                    {# Use spaceless tag to remove spaces inside the A tag. #}
+                    {% spaceless %}
+
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                  <div class="album-item">
+                      <a href="
+                      {% if detailsPage %}
+
+                        {{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}
+
+                      {% else %}
+
+                        #
+
+                      {% endif %}
+
+                        ">
+
+                          <img src="{{ record.poster.thumb(300, auto) }}" class="img-responsive" alt="record.name">
+                          <div class="overlay base-gradient-bg"></div>
+                          <h3 class="heading">{{record.name}}</h3>
+                          <span class="sub-heading">
+                            {% for genre in record.genres %}
+
+                              {{ genre.genre_name }}
+
+                            {% endfor %}
+
+                          </span>
+                      </a>
+
+                  </div><!--/.album-item-->
+              </div>
+
+
+              {% endspaceless %}
+
+              {% else %}
+                  <li class="no-data">{{ noRecordsMessage }}</li>
+              {% endfor %}
+
+        </div>
+    </div>
+</div>
+
+{% if records.lastPage > 1 %}
+    <ul class="pagination">
+        {% if records.currentPage > 1 %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage-1) }) }}">&larr; Prev</a></li>
+        {% endif %}
+
+        {% for page in 1..records.lastPage %}
+            <li class="{{ records.currentPage == page ? 'active' : null }}">
+                <a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}">{{ page }}</a>
+            </li>
+        {% endfor %}
+
+        {% if records.lastPage > records.currentPage %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage+1) }) }}">Next &rarr;</a></li>
+        {% endif %}
+    </ul>
+{% endif %}

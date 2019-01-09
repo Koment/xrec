@@ -1,0 +1,120 @@
+description = "Studio-main layout"
+==
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>X-Records - Студия звукозаписи | Репетиционаая база в Симферополе | зфпу-ешеду = {{ this.page.title }}</title>
+        <meta name="description" content="{{ this.page.meta_description }} | X-Records - Студия звукозаписи в Симферополе. | Запись +7 (978) 933-88-49 | Репетиционная база +7 (978) 791-17-03">
+        <meta name="title" content="{{ this.page.meta_title }}">
+        <meta name="keywords" content="X-Records, студия звукозаписи, Симферополь, репетиционная база, звукозапись, запись песен, написание текстов, написание аранжировок, создание музыки, создание битов, рэп, рок, поп, метал, репетиционная база, студийное оборудование, профессиональная запись, мастеринг треков, сведение треков Ялта, Алушта, Керчь, Севастополь, Крым, записать песню, записать песни, записать песню в студии, песня на свадьбу, песня на новый год, где записать песню, где записывают песни, песня на корпоратив, записать песню в подарок, сколько стоит записать песню, хочу записать песню">
+        <meta name="author" content="X-Records">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- ================= Favicon ================== -->
+        <link rel="icon" type="image/png" href="{{ 'assets/images/favicon/android-icon-192x192.png' | theme }}">
+        <link rel="apple-touch-icon" href="{{ 'assets/images/favicon/apple-icon-114x114.png' | theme }}">
+        <link rel="apple-touch-icon" href="{{ 'assets/images/favicon/apple-icon-72x72.png' | theme }}">
+        <link rel="icon" href="{{ 'assets/images/favicon/android-icon-72x72.png' | theme }}">
+        <link rel="icon" type="image/png" href="{{ 'assets/images/favicon/favicon-96x96.png' | theme }}">
+
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+        <!-- Bootstrap css-->
+        <link rel="stylesheet" href="{{ 'assets/css/bootstrap.min.css' | theme }}">
+        <!-- Ionicon css-->
+        <link rel="stylesheet" href="{{ 'assets/css/ionicons.min.css' | theme }}">
+        <!-- Font Awesome css-->
+        <link rel="stylesheet" href="{{ 'assets/css/font-awesome.min.css' | theme }}">
+        <!-- REVOLUTION SLIDER STYLES -->
+        <link rel="stylesheet" type="text/css" href="{{ 'assets/css/settings.css' | theme }}">
+        <link rel="stylesheet" href="{{ 'assets/css/layers.css' | theme }}">
+        <link rel="stylesheet" type="text/css" href="{{ 'assets/css/navigation.css' | theme }}">
+        <!-- Jquery Countdown css-->
+        <link rel="stylesheet" href="{{ 'assets/css/jquery.countdown.css' | theme }}">
+        <!-- Magnific popup css-->
+        <link rel="stylesheet" href="{{ 'assets/css/magnific-popup.css' | theme }}">
+        <!-- SLimple Light box-->
+        <link rel="stylesheet" href="{{ 'assets/css/simplelightbox.css' | theme }}">
+        <!-- Style css-->
+        <link rel="stylesheet" href="{{ 'assets/css/style.css' | theme }}">
+        <!-- Responsive css-->
+        <link rel="stylesheet" href="{{ 'assets/css/responsive.css' | theme }}">
+        <!-- Modernizr js-->
+        <script src="{{ 'assets/javascript/modernizr-2.8.3.min.js' | theme }}"></script>
+
+        <!-- <link rel="stylesheet" href="{{ 'assets/css/owl.carousel.min.css' | theme }}"> -->
+
+        <link rel="stylesheet" href="https://cdn.plyr.io/3.4.7/plyr.css">
+
+        {% styles %}
+
+    </head>
+    <body>
+
+        <!-- Header -->
+        <header class="musica-header home-page-header" id="home">
+            {% partial 'site/header' %}
+        </header>
+
+        <!-- Content -->
+        <section id="layout-content" class="">
+            {% page %}
+        </section>
+
+        <!-- Footer -->
+        <footer id="layout-footer">
+            {% partial 'site/footer' %}
+        </footer>
+
+        <!-- Scripts -->
+
+
+        <script src="{{ 'assets/javascript/app.js'|theme }}"></script>
+
+        <script src="{{ 'assets/javascript/owl.carousel.min.js'|theme }}"></script>
+
+        <!-- == jQuery Librery == -->
+        <script src="{{ 'assets/vendor/jquery-2.2.4.min.js'|theme }}"></script>
+        <!-- == Bootsrap js File == -->
+        <script src="{{ 'assets/vendor/bootstrap.min.js'|theme }}"></script>
+        <!-- == Jquery Countdown == -->
+        <script src="{{ 'assets/javascript/jquery.plugin.js'|theme }}"></script>
+        <script src="{{ 'assets/javascript/jquery.countdown.min.js'|theme }}"></script>
+        <!-- == Magnific Popup == -->
+        <script src="{{ 'assets/javascript/jquery.magnific-popup.min.js'|theme }}"></script>
+        <!-- == nicescroll == -->
+        <script src="{{ 'assets/javascript/jquery.nicescroll.min.js'|theme }}"></script>
+        <!-- == Jquery Player == -->
+        <script src="{{ 'assets/javascript/jquery.jplayer.min.js'|theme }}"></script>
+        <script src="{{ 'assets/javascript/jplayer.playlist.min.js'|theme }}"></script>
+        <script type="text/javascript" src="{{ 'assets/music/playlist.js' | theme }}"></script>
+        <!-- == Light Box == -->
+        <script src="{{ 'assets/javascript/simple-lightbox.min.js'|theme }}"></script>
+        <!-- == Isotope == -->
+        <script src="{{ 'assets/javascript/isotope.pkgd.min.js'|theme }}"></script>
+
+        <!-- == Revolution Slider JS == -->
+        <script type="text/javascript" src="{{ 'assets/javascript/revolution/jquery.themepunch.tools.min.js'|theme }}"></script>
+        <script type="text/javascript" src="{{ 'assets/javascript/revolution/jquery.themepunch.revolution.min.js'|theme }}"></script>
+        <script type="text/javascript" src="{{ 'assets/javascript/revolution/extensions/revolution.extension.actions.min.js'|theme }}"></script>
+        <script type="text/javascript" src="{{ 'assets/javascript/revolution/extensions/revolution.extension.layeranimation.min.js'|theme }}"></script>
+        <script type="text/javascript" src="{{ 'assets/javascript/revolution/extensions/revolution.extension.navigation.min.js'|theme }}"></script>
+        <script type="text/javascript" src="{{ 'assets/javascript/revolution/extensions/revolution.extension.slideanims.min.js'|theme }}"></script>
+        <script type="text/javascript" src="{{ 'assets/javascript/revolution-active.js'|theme }}"></script>
+
+        <!-- == Custom Js == -->
+        <script src="{{ 'assets\javascript\custom.js' | theme }}"></script>
+
+        <!-- == plyr player == -->
+
+        <script src="https://cdn.plyr.io/3.4.7/plyr.polyfilled.js"></script>
+        <script>const player = new Plyr('#player');</script>
+
+        {% framework extras %}
+        {% scripts %}
+
+    </body>
+</html>

@@ -1,0 +1,30 @@
+title = "Tags"
+url = "/tags/:slug"
+layout = "studio-dark"
+is_hidden = 0
+
+[builderDetails]
+modelClass = "Kom\Artists\Models\Tag"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "tag"
+notFoundMessage = "Record not found"
+==
+{% set record = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+{% if record %}
+
+    <h2>{{ attribute(record, displayColumn) }}</h2>
+
+    {% for artist in record.artists %}
+
+      <a href="/artist/{{ artist.slug }}">{{ artist.name }}</a>
+
+    {% endfor %}
+
+
+{% else %}
+    {{ notFoundMessage }}
+{% endif %}
