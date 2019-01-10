@@ -45,9 +45,18 @@ description = "Studio-main layout"
         <!-- Modernizr js-->
         <script src="{{ 'assets/javascript/modernizr-2.8.3.min.js' | theme }}"></script>
 
+        <!-- == jQuery Librery == -->
+        <script src="{{ 'assets/vendor/jquery-2.2.4.min.js'|theme }}"></script>
+
         <!-- <link rel="stylesheet" href="{{ 'assets/css/owl.carousel.min.css' | theme }}"> -->
 
-        <link rel="stylesheet" href="https://cdn.plyr.io/3.4.7/plyr.css">
+        <script src="{{ 'assets/javascript/player/audio.js' | theme}}"></script>
+
+        <script>
+          audiojs.events.ready(function() {
+            var as = audiojs.createAll();
+          });
+        </script>
 
         {% styles %}
 
@@ -76,8 +85,7 @@ description = "Studio-main layout"
 
         <script src="{{ 'assets/javascript/owl.carousel.min.js'|theme }}"></script>
 
-        <!-- == jQuery Librery == -->
-        <script src="{{ 'assets/vendor/jquery-2.2.4.min.js'|theme }}"></script>
+
         <!-- == Bootsrap js File == -->
         <script src="{{ 'assets/vendor/bootstrap.min.js'|theme }}"></script>
         <!-- == Jquery Countdown == -->
@@ -110,8 +118,10 @@ description = "Studio-main layout"
 
         <!-- == plyr player == -->
 
-        <script src="https://cdn.plyr.io/3.4.7/plyr.polyfilled.js"></script>
-        <script>const player = new Plyr('#player');</script>
+        <!-- <script src="https://cdn.plyr.io/3.4.7/plyr.polyfilled.js"></script>
+        <script>const player = new Plyr('#player');</script> -->
+
+
 
         {% framework extras %}
         {% scripts %}

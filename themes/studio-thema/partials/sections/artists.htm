@@ -8,12 +8,17 @@ detailsPage = "artist"
 detailsKeyColumn = "slug"
 detailsUrlParameter = "slug"
 pageNumber = "{{ :page }}"
+
+[randomArtists]
 ==
 <section class="album-section section-padding" id="artists">
         <div class="container">
             <div class="section-heading text-center">
                 <h2>Исполнители</h2>
             </div>
+            
+            {% component 'randomArtists' %}
+            
             <div class="row row-eq-height">
 
               {% for record in records %}
@@ -37,7 +42,7 @@ pageNumber = "{{ :page }}"
                           ">
 
 
-                            <img src="{{ record.poster.thumb(300, auto) }}" class="img-responsive" alt="record.name">
+                            <img src="{{ record.poster.thumb(350, 300, {'mode':'crop'}) }}" class="img-responsive" alt="record.name">
                             <div class="overlay base-gradient-bg"></div>
                             <h3 class="heading">{{record.name}}</h3>
                             <span class="sub-heading">

@@ -6,6 +6,13 @@ class Plugin extends PluginBase
 {
     public function registerComponents()
     {
+
+        return [
+
+          'Kom\Artists\Components\randomArtists' => 'randomArtists'
+
+        ];
+
     }
 
     public function registerFormWidgets()

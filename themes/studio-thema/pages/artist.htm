@@ -1,4 +1,4 @@
-title = "artist"
+title = "Исполнитель"
 url = "/artist/:slug"
 layout = "studio-dark"
 is_hidden = 0
@@ -14,58 +14,89 @@ notFoundMessage = "Record not found"
 {% set displayColumn = builderDetails.displayColumn %}
 {% set notFoundMessage = builderDetails.notFoundMessage %}
 
+    <style>
+        /* body { color: #666; font-family: sans-serif; line-height: 1.4; }
+        h1 { color: #444; font-size: 1.2em; padding: 14px 2px 12px; margin: 0px; }
+        h1 em { font-style: normal; color: #999; }
+        a { color: #888; text-decoration: none; } */
+        #wrapper { width: 400px; margin: 40px auto; }
+
+        ol { padding: 0px; margin: 0px; list-style: decimal-leading-zero inside; color: #ccc; width: 460px; border-top: 1px solid #ccc; font-size: 0.9em; }
+        ol li { position: relative; margin: 0px; padding: 9px 2px 10px; border-bottom: 1px solid #ccc; cursor: pointer; }
+        ol li a { display: block; text-indent: -3.3ex; padding: 0px 0px 0px 20px; }
+        li.playing { color: #aaa; text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.3); }
+        /* li.playing a { color: #fff; } */
+        li.playing:before { content: '♬'; width: 14px; height: 14px; padding: 3px; line-height: 14px; margin: 0px; position: absolute; left: -24px; top: 9px; color: #000; font-size: 13px; text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.2); }
+
+        #shortcuts { position: fixed; bottom: 0px; width: 100%; color: #666; font-size: 0.9em; margin: 60px 0px 0px; padding: 20px 20px 15px; background: #f3f3f3; background: rgba(240, 240, 240, 0.7); }
+        #shortcuts div { width: 460px; margin: 0px auto; }
+        #shortcuts h1 { margin: 0px 0px 6px; }
+        #shortcuts p { margin: 0px 0px 18px; }
+        #shortcuts em { font-style: normal; background: #d3d3d3; padding: 3px 9px; position: relative; left: -3px;
+            -webkit-border-radius: 4px; -moz-border-radius: 4px; -o-border-radius: 4px; border-radius: 4px;
+            -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); -moz-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); -o-box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); }
+
+        @media screen and (max-device-width: 480px) {
+            #wrapper { position: relative; left: -3%; }
+            #shortcuts { display: none; }
+        }
+
+        .credit {
+            text-align: center;
+        }
+    </style>
+
+    <script>
+        $(function() {
+            // Setup the player to autoplay the next track
+            var a = audiojs.createAll({
+                trackEnded: function() {
+                    var next = $('ol li.playing').next();
+                    if (!next.length) next = $('ol li').first();
+                    next.addClass('playing').siblings().removeClass('playing');
+                    audio.load($('a', next).attr('data-src'));
+                    audio.play();
+                }
+            });
+
+            // Load in the first track
+            var audio = a[0];
+            first = $('ol a').attr('data-src');
+            $('ol li').first().addClass('playing');
+            audio.load(first);
+
+            // Load in a track on click
+            $('ol li').click(function(e) {
+                e.preventDefault();
+                $(this).addClass('playing').siblings().removeClass('playing');
+                audio.load($('a', this).attr('data-src'));
+                audio.play();
+            });
+            // Keyboard shortcuts
+            $(document).keydown(function(e) {
+                var unicode = e.charCode ? e.charCode : e.keyCode;
+                // right arrow
+                if (unicode == 39) {
+                    var next = $('li.playing').next();
+                    if (!next.length) next = $('ol li').first();
+                    next.click();
+                    // back arrow
+                } else if (unicode == 37) {
+                    var prev = $('li.playing').prev();
+                    if (!prev.length) prev = $('ol li').last();
+                    prev.click();
+                    // spacebar
+                } else if (unicode == 32) {
+                    audio.playPause();
+                }
+            })
+        });
+    </script>
+
 
 {% partial 'sections/banner.htm' %}
 
 {% if record %}
-
-
-
-    <h2>{{ record.name }}</h2>
-    <h4>{% for genre in record.genres %}
-
-          <a href="/genres/{{ genre.slug }}">{{ genre.genre_name }}</a>
-
-        {% endfor %}
-    </h4>
-
-    {% if record.consist %}
-      Состав группы:
-      <ul>
-        <li>Имя
-            Возраст
-            Позиция</li>
-        {% for musicman in record.consist %}
-
-          <li>{{ musicman.musicman_name }}
-          {{ musicman.musicman_age }}
-          {{ musicman.musicman_inst }}</li>
-
-        {% endfor %}
-      </ul>
-    {% endif %}
-    {{ record.description|raw }}
-
-    <ul>
-
-        {% for track in record.tracks %}
-
-          <li>{{ track.getFileName() }} - {{ track.path }}</li>
-
-        {% endfor %}
-
-    </ul>
-
-    <h4>Tags</h4>
-
-    {% for tag in record.tags %}
-
-      <a href="/tags/{{ tag.slug }}">{{ tag.tag }}</a>
-
-    {% endfor %}
-
-
-
 
 <div class="main-content pdt40 pdb90">
     <div class="container">
@@ -75,6 +106,13 @@ notFoundMessage = "Record not found"
                     <div class="image">
                         <img src="{{ record.poster.thumb(400, auto) }}" alt="{{ record.name }}" class="img-responsive">
                     </div>
+
+                    <div class="desc">
+
+                      {{ record.description|raw }}
+
+                    </div>
+
                 </div>
                 <div class="col-md-6">
                     <div class="album-detail-text">
@@ -93,6 +131,16 @@ notFoundMessage = "Record not found"
                             <!-- <li>Зарегистрирован<span class="pull-right">09 Августа 2014</span></li> -->
                             <li>Лейбл<span class="pull-right">X-Records</span></li>
                         </ul>
+
+                        <center><h3>Состав</h3></center>
+                        <ul>
+                            {% for musicman in record.consist %}
+
+                              <li>{{ musicman.musicman_name }}<span class="pull-right">{{ musicman.musicman_inst }}</span></li>
+
+                            {% endfor %}
+                        </ul>
+
                         <div class="album-detail-button" style="text-align: center;">
                             <a href="#" class="musica-button-two">ВКонтач</a>
                             <a href="#" class="musica-button-two">Cwitter</a>
@@ -102,19 +150,35 @@ notFoundMessage = "Record not found"
             </div>
         </div>
 
-        
+      <div id="wrapper">
+        <h1>{{ record.name }}</h1>
+          <audio preload></audio>
+            <ol>
+                {% for track in record.tracks %}
 
-        <audio id="player" controls>
+                  <li><a href="#" data-src="{{ track.path }}">{{ track.getFileName() }}</a></li>
 
-          {% for track in record.tracks %}
+                {% endfor %}
+            </ol>
+      </div>
 
-            <source src="{{ track.path }}" type="audio/mp3">
+      <div class="tags">
+
+        <h4>Тэги</h4>
+
+        <ul>
+
+          {% for tag in record.tags %}
+
+            <li><a href="/tags/{{ tag.slug }}">{{ tag.tag }}</a></li>
 
           {% endfor %}
 
-        </audio>
+        </ul>
 
-        <div class="album-detail-audio-player">
+      </div>
+
+        <!-- <div class="album-detail-audio-player">
             <div class="musica-audio-player">
                 <div id="musica-audio-player-container" class="jp-video" role="application" aria-label="media player">
                     <div id="tr-player"></div>
@@ -157,7 +221,7 @@ notFoundMessage = "Record not found"
                             <div class="jp-details">
                                 <div class="jp-title" aria-label="title">&nbsp;</div>
                             </div><!--/title-->
-                            <div id="musica-jquery-jplayer" class="jp-jplayer"></div>
+                          <!--  <div id="musica-jquery-jplayer" class="jp-jplayer"></div>
                         </div>
                         <div class="audio-playlist-wrapper">
                             <div id="playlist-wrapper">
@@ -172,7 +236,8 @@ notFoundMessage = "Record not found"
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
+
         <div class="row">
             <div class="col-md-12">
                 <div class="section-heading text-center">

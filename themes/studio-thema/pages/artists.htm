@@ -50,7 +50,7 @@ pageNumber = "{{ :page }}"
 
                         ">
 
-                          <img src="{{ record.poster.thumb(300, auto) }}" class="img-responsive" alt="record.name">
+                          <img src="{{ record.poster.thumb(350, 300, {'mode':'crop'}) }}" class="img-responsive" alt="record.name">
                           <div class="overlay base-gradient-bg"></div>
                           <h3 class="heading">{{record.name}}</h3>
                           <span class="sub-heading">

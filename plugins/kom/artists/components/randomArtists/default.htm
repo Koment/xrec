@@ -1,0 +1,11 @@
+{% set randomArtists = __SELF__.randomArtists %}
+
+<ul>
+
+  {% for artist in randomArtists %}
+
+    <li>{{ artist.name }}</li>
+
+  {% endfor %}
+
+</ul>
