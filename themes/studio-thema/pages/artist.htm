@@ -9,6 +9,8 @@ identifierValue = "{{ :slug }}"
 modelKeyColumn = "slug"
 displayColumn = "name"
 notFoundMessage = "Record not found"
+
+[randomArtists]
 ==
 {% set record = builderDetails.record %}
 {% set displayColumn = builderDetails.displayColumn %}
@@ -238,15 +240,17 @@ notFoundMessage = "Record not found"
             </div>
         </div> -->
 
-        <div class="row">
+        <!-- <div class="row"> -->
             <div class="col-md-12">
                 <div class="section-heading text-center">
                     <h2>Другие исполнители</h2>
                 </div>
             </div>
 
+            {% component 'randomArtists' %}
 
-           <div class="col-md-4 col-sm-6 col-xs-12">
+
+           <!-- <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="album-item">
                     <a href="../../artists/delfina/artist.html">
                         <img src="../../artists/delfina/images/image.jpg" class="img-responsive" alt="Дельфина">
@@ -254,11 +258,11 @@ notFoundMessage = "Record not found"
                         <h3 class="heading">Дельфина</h3>
                         <span class="sub-heading">Рэп, Поп, Рок, Джаз</span>
                     </a>
-      </div><!--/.album-item-->
+              </div>/.album-item
             </div>
 
 
-    <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="album-item">
                     <a href="../../artists/nikita-kit/artist.html">
                         <img src="../../artists/nikita-kit/images/image.jpg" class="img-responsive" alt="Никита КИТ">
@@ -266,11 +270,11 @@ notFoundMessage = "Record not found"
                         <h3 class="heading">Никита КИТ</h3>
                         <span class="sub-heading">Рэп</span>
                     </a>
-      </div><!--/.album-item-->
+              </div>/.album-item
             </div>
 
 
-    <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="album-item">
                     <a href="../../artists/ali/artist.html">
                         <img src="../../artists/ali/images/image.jpg" class="img-responsive" alt="Али a.k.a V9">
@@ -278,11 +282,14 @@ notFoundMessage = "Record not found"
                         <h3 class="heading">Али a.k.a V9</h3>
                         <span class="sub-heading">Рэп</span>
                     </a>
-      </div><!--/.album-item-->
-            </div>
+              </div>/.album-item
+            </div> -->
 
 
-        </div>
+        <!-- </div> -->
+
+
+
     </div>
 </div>
 

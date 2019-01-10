@@ -12,9 +12,26 @@ class randomArtists extends ComponentBase {
         return [
 
           'name' => 'Random Artists',
-          'description' => 'Discpays random artists'
+          'description' => 'Displays random artists'
 
         ];
+    }
+
+    public function defineProperties(){
+
+      return [
+
+        'results' => [
+
+            'title' => 'Random artists',
+            'description' => 'How many artists to display',
+            'default' => 3,
+            'validationPattern' => '^[0-9]+$',
+            'validationMessage' => 'Only numbers allowed!'
+
+        ]
+
+      ];
 
 
     }
@@ -28,7 +45,33 @@ class randomArtists extends ComponentBase {
 
     protected function loadArtists(){
 
-      return Artist::all();
+      // dd(Artist);
+
+      return Artist::whereIn('id', $this->randomIDs())->get();
+
+    }
+
+    protected function randomIDs(){
+
+      $ids = [];
+
+      $count = Artist::count();
+
+      // if ($this->property('results') > $count) { $this->property('results') = $count; }
+
+      while (count($ids) < (($this->property('results')>$count) ? $count : $this->property('results'))) {
+
+        $tmp = rand(1, $count);
+
+        if (!in_array($tmp, $ids)){
+
+          $ids[] = $tmp;
+
+        }
+
+      }
+
+      return $ids;
 
     }
 
