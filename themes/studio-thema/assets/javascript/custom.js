@@ -259,32 +259,32 @@ jQuery(document).ready(function () {
 		$(this).toggleClass('toggle-mute');
 	});
 	/*** =====================================* Contact Form submission* =====================================*/
-	$(function() {
-		$('form#contact').on('submit', function(e) {
-			e.preventDefault();
-			$.post('send.php', $(this).serialize()).done(function(data) {
-				$('.comment-form').fadeOut('slow', function() {
-					$('.comment-form').fadeIn('slow').html(data);
-				});
-			}).fail(function() {
-				alert('Не удалось отправить. Пожалуйста, попробуйте снова.');
-			});
-		});
-	});
-	
+	// $(function() {
+	// 	$('form#contact').on('submit', function(e) {
+	// 		e.preventDefault();
+	// 		$.post('send.php', $(this).serialize()).done(function(data) {
+	// 			$('.comment-form').fadeOut('slow', function() {
+	// 				$('.comment-form').fadeIn('slow').html(data);
+	// 			});
+	// 		}).fail(function() {
+	// 			alert('Не удалось отправить. Пожалуйста, попробуйте снова.');
+	// 		});
+	// 	});
+	// });
+
 	/*** =====================================* Certificate Form submission* =====================================*/
-	$(function() {
-		$('form#contact').on('submit', function(e) {
-			e.preventDefault();
-			$.post('cert-form.php', $(this).serialize()).done(function(data) {
-				$('.cert-form').fadeOut('slow', function() {
-					$('.cert-form').fadeIn('slow').html(data);
-				});
-			}).fail(function() {
-				alert('Не удалось отправить. Пожалуйста, попробуйте снова.');
-			});
-		});
-	});
+	// $(function() {
+	// 	$('form#contact').on('submit', function(e) {
+	// 		e.preventDefault();
+	// 		$.post('cert-form.php', $(this).serialize()).done(function(data) {
+	// 			$('.cert-form').fadeOut('slow', function() {
+	// 				$('.cert-form').fadeIn('slow').html(data);
+	// 			});
+	// 		}).fail(function() {
+	// 			alert('Не удалось отправить. Пожалуйста, попробуйте снова.');
+	// 		});
+	// 	});
+	// });
 
 
 

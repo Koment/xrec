@@ -1,4 +1,4 @@
-title = "Tags"
+title = "Тэги"
 url = "/tags/:slug"
 layout = "studio-dark"
 is_hidden = 0
@@ -14,7 +14,7 @@ notFoundMessage = "Record not found"
 {% set displayColumn = builderDetails.displayColumn %}
 {% set notFoundMessage = builderDetails.notFoundMessage %}
 
-{% if record %}
+<!-- {% if record %}
 
     <h2>{{ attribute(record, displayColumn) }}</h2>
 
@@ -27,4 +27,69 @@ notFoundMessage = "Record not found"
 
 {% else %}
     {{ notFoundMessage }}
+{% endif %} -->
+
+
+{% partial 'sections/banner.htm' %}
+
+<div class="main-content pdt40 pdb90">
+    <div class="container">
+        <div class="row row-eq-height">
+
+          {% if record %}
+
+            {% for artist in record.artists %}
+
+                    {# Use spaceless tag to remove spaces inside the A tag. #}
+                    {% spaceless %}
+
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                  <div class="album-item">
+                      <a href="/artist/{{ artist.slug }}">
+
+                          <img src="{{ artist.poster.thumb(350, 300, {'mode':'crop'}) }}" class="img-responsive" alt="record.name">
+                          <div class="overlay base-gradient-bg"></div>
+                          <h3 class="heading">{{artist.name}}</h3>
+                          <span class="sub-heading">
+                            {% for genre in artist.genres %}
+
+                              {{ genre.genre_name }}
+
+                            {% endfor %}
+
+                          </span>
+                      </a>
+
+                  </div><!--/.album-item-->
+              </div>
+
+
+              {% endspaceless %}
+
+              {% else %}
+                  <li class="no-data">{{ noRecordsMessage }}</li>
+              {% endfor %}
+
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+
+{% if records.lastPage > 1 %}
+    <ul class="pagination">
+        {% if records.currentPage > 1 %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage-1) }) }}">&larr; Prev</a></li>
+        {% endif %}
+
+        {% for page in 1..records.lastPage %}
+            <li class="{{ records.currentPage == page ? 'active' : null }}">
+                <a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}">{{ page }}</a>
+            </li>
+        {% endfor %}
+
+        {% if records.lastPage > records.currentPage %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage+1) }) }}">Next &rarr;</a></li>
+        {% endif %}
+    </ul>
 {% endif %}

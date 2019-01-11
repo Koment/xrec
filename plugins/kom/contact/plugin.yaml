@@ -1,0 +1,6 @@
+plugin:
+    name: 'kom.contact::lang.plugin.name'
+    description: 'kom.contact::lang.plugin.description'
+    author: Kom
+    icon: oc-icon-envelope
+    homepage: ''

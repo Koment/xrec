@@ -1,0 +1,62 @@
+title = "Контакты"
+url = "/contact"
+layout = "studio-dark"
+is_hidden = 0
+
+[contactform]
+==
+{% partial 'sections/banner' %}
+
+
+<div class="main-content pdt40 pdb110">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="musica-contact-google-map">
+                    <div id="map"></div>
+                </div>
+
+
+
+{% component 'contactform' %}
+
+
+</div>
+  <div class="col-md-4">
+      <div class="sidebar">
+          <aside class="sidebar-widget">
+            <div class="widget-heading">
+              <h3>Контакты</h3>
+            </div>
+                  +7 (978) 933-88-49 - Запись<br>
+                  +7 (978) 791-17-03 - Репетиции<br>
+                  Крым, г. Симферополь<br><br>
+                  <p>Мы предоставляем:<br><br>Запись треков в разных стилях;<br> Написание текстов;<br>Создание аранжировок;<br>Сведение треков онлайн;<br>Аренда репетиционки;<br>Уроки вокала;<br>Репетиционная база.</p>
+                          <br>
+              <div class="widget-heading">
+                  <h3>О Нас</h3>
+              </div>
+              <address>
+                  Cтудия звукозаписи X-Records производит полный спектр услуг звукозаписи,<br>также полный комплекс по написанию и записи профессиональных авторских треков.<br>Мы свершаем все требования клиентов, связанные с записью и дальнейшей обработкой звука.<br>Обеспечиваем качественную запись и сведение музыкальных треков, мастеринг треков.<br><br>Услугами студии звукозаписи пользуются промоутерские компании,<br>продюсерские центры, ведущие электронные музыканты,<br> а также Хип-Хоп и РнБ артисты города Симферополя и всего Крыма в целом.<br> Мы готовы воплотить ваши творческие идеи и пожелания в жизнь<br>на звукозаписывающей студии нового поколения - X-Records.<br><br>Мы всегда рады Вас видеть!
+              </address>
+            </aside><!--/.sidebar-widget-->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- =============== VK ================ -->
+      <!-- <script type="text/javascript" src="//vk.com/js/api/openapi.js?146"></script> -->
+      <!-- VK Widget -->
+      <!-- <div id="vk_community_messages"></div>
+      <script type="text/javascript">
+      VK.Widgets.CommunityMessages("vk_community_messages", 41301891, {expandTimeout: "5000",tooltipButtonText: "Есть вопрос?"});
+      </script> -->
+<!-- =============== END VK ================ -->
+
+<!-- == Google Map == -->
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDTje3iuLAYQmMK3153NzxMto6GNzkzuCE"></script>
+<script type="text/javascript" src="{{ 'assets/javascript/map-init.js' | theme}}"></script>
