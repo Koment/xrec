@@ -34,14 +34,16 @@ class ContactForm extends ComponentBase
         [
 
           'name' => Input::get('name'),
-          'email' => Input::get('email')
+          'email' => Input::get('email'),
+          'content' => Input::get('content')
 
         ],
 
         [
 
           'name' => 'required',
-          'email' => 'required|email'
+          'email' => 'required|email',
+          'content' => 'required',
         ]
 
       );
@@ -51,9 +53,11 @@ class ContactForm extends ComponentBase
 
           return ['#result' => $this->renderPartial('contactform::messages',[
 
-                'errMsgs' => $validator->messages()->all()
+                  'errMsgs' => $validator->messages()->all(),
 
-            ])];
+                  'fieldMsgs' => $validator->messages(),
+
+                ])];
 
         } else {
 

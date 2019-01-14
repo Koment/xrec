@@ -24,6 +24,140 @@ results = 6
                 <a href="/artists" class="musica-button">Показать всех исполнителей</a>
             </div>
         </div>
+
+        <div class="audio-player-area background-overlay">
+            <div class="container">
+                <div class="musica-audio-player">
+                    <div id="musica-audio-player-container" class="jp-video" role="application" aria-label="media player">
+                        <div id="tr-player"></div>
+                    	<div class="jp-type-playlist">
+                            <div class="audio-table">
+                                <div class="jp-controls">
+                                    <button class="jp-previous"></button>
+                                    <button class="jp-play"></button>
+                                    <button class="jp-next"></button>
+                                    <button class="jp-stop"></button>
+                                </div>
+                                <div class="jp-toggles">
+                                    <button class="jp-repeat">Повторение</button>
+                                    <button class="jp-shuffle">Перемешать</button>
+                                    <button class="jp-full-screen">На весь экран</button>
+                                </div>
+                                <div class="jp-gui">
+                        			<div class="jp-video-play">
+                        				<button class="jp-video-play-icon"></button>
+                        			</div>
+                        			<div class="jp-interface">
+                        				<div class="jp-progress">
+                        					<div class="jp-seek-bar">
+                        						<div class="jp-play-bar"></div>
+                        					</div>
+                        				</div>
+                        				<div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
+                        				<div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+                                        <button class="audio-playlist">...</button>
+                        			</div>
+
+                        		</div>
+                                <div class="jp-volume-controls">
+                                    <button class="jp-mute"></button>
+                                    <button class="jp-volume-max"></button>
+                                    <div class="jp-volume-bar">
+                                        <div class="jp-volume-bar-value"></div>
+                                    </div>
+                                </div>
+                                <div class="jp-details">
+                                    <div class="jp-title" aria-label="title">&nbsp;</div>
+                                </div><!--/title-->
+                                <div id="musica-jquery-jplayer" class="jp-jplayer"></div>
+                            </div>
+                    		<div class="audio-playlist-wrapper">
+                                <div class="container" id="playlist-wrapper">
+                                    <div class="jp-playlist  nicescroll-active">
+                                			<ul>
+                                				<li>
+                                				</li>
+                                			</ul>
+                                		</div>
+                                </div>
+                    		</div>
+                    	</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+
+          var list = [];
+
+        </script>
+
+        {% for record in records %}
+
+            <script type="text/javascript">
+
+              var track = {{ record.tracks|json_encode()|raw }}
+
+              var j = 0;
+
+              while(j < track.length){
+
+                tmp = {
+                        title:track[j].file_name,
+                        artist:{{ record.name|json_encode()|raw }},
+                        mp3:track[j].path,
+                        poster:{{ record.poster|json_encode()|raw }},
+                      };
+
+                list.push(tmp);
+
+                j++;
+
+              }
+
+            </script>
+
+        {% endfor %}
+
+        <script type="text/javascript">
+
+        //<![CDATA[
+        $(document).ready(function(){
+            "use strict";
+            new jPlayerPlaylist({
+                jPlayer: "#musica-jquery-jplayer",
+                cssSelectorAncestor: "#musica-audio-player-container"
+            },
+
+            list,
+
+            {
+                playlistOptions: {
+                    autoPlay: false,
+                    loopOnPrevious: true,
+                    shuffleOnLoop: true,
+                    enableRemoveControls: true,
+                    displayTime: "show",
+                    freeItemClass: "jp-playlist-item-free",
+                },
+                swfPath: "../js/jquery.jplayer.swf",
+                supplied: "oga, mp3",
+                wmode: "window",
+                useStateClassSkin: true,
+                autoBlur: true,
+                smoothPlayBar: true,
+                keyEnabled: true,
+                remainingDuration: true,
+                volume: .5,
+            });
+
+        });
+        //]]>
+
+
+        </script>
+
 </section>
 
 {% set records = builderList.records %}

@@ -1,5 +1,22 @@
 {% for message in errMsgs %}
 
-  {{ message }}
+  {{ message }} <br>
 
 {% endfor %}
+
+
+<script type="text/javascript">
+
+  $('.errMsg').remove();
+
+  var msg = {{ fieldMsgs|json_encode()|raw }};
+
+  console.log(msg);
+
+  $.each(msg, function(i, obj){
+
+    $('<div class="errMsg">' + obj + '</div>').insertBefore($('*[name=' + i + ']'));
+
+  });
+
+</script>

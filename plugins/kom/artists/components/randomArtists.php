@@ -33,7 +33,6 @@ class randomArtists extends ComponentBase {
 
       ];
 
-
     }
 
     public function onRun(){
@@ -45,8 +44,6 @@ class randomArtists extends ComponentBase {
 
     protected function loadArtists(){
 
-      // dd(Artist);
-
       return Artist::whereIn('id', $this->randomIDs())->get();
 
     }
@@ -56,8 +53,6 @@ class randomArtists extends ComponentBase {
       $ids = [];
 
       $count = Artist::count();
-
-      // if ($this->property('results') > $count) { $this->property('results') = $count; }
 
       while (count($ids) < (($this->property('results')>$count) ? $count : $this->property('results'))) {
 
