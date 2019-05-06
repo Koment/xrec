@@ -4,6 +4,12 @@
 
 {% endfor %}
 
+{% for message in success %}
+
+  {{ message }} <br>
+
+{% endfor %}
+
 
 <script type="text/javascript">
 
@@ -11,12 +17,24 @@
 
   var msg = {{ fieldMsgs|json_encode()|raw }};
 
-  console.log(msg);
+  console.log('msg = ' + msg);
 
   $.each(msg, function(i, obj){
 
     $('<div class="errMsg">' + obj + '</div>').insertBefore($('*[name=' + i + ']'));
 
   });
+
+  $('.success').remove();
+
+  var msgS = {{ success|json_encode()|raw }};
+
+  console.log('msgS = ' + msgS);
+
+  if (msgS) {
+
+    $('<div class="success">' + msgS + '</div>').insertBefore($('#result'));
+
+  }  
 
 </script>

@@ -61,11 +61,11 @@ class ContactForm extends ComponentBase
 
         } else {
 
-            $vars = ['name' => Input::get('name'), 'email' => Input::get('email'), 'content' => Input::get('content')];
+            $vars = ['name' => Input::get('name'), 'email' => Input::get('email'), 'content' => Input::get('content'), 'subject' => 'Contact form'];
 
             Mail::send('kom.contact::mail.message', $vars, function($message){
 
-              $message -> to('AngryAdmin@mail', 'Angry Admin');
+              $message -> to('koment47@yandex.ru', 'Angry Admin');
 
               $message -> subject('new message from contact form');
 
@@ -73,7 +73,8 @@ class ContactForm extends ComponentBase
 
             return ['#result' => $this->renderPartial('contactform::messages',[
 
-                  'errMsgs' => $validator->messages()->all()
+                  'errMsgs' => $validator->messages()->all(),
+                  'success' => 'your messaga is send!',
 
               ])];
 
