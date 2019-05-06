@@ -23,7 +23,8 @@ results = 6
             <div class="text-center pdt40">
                 <a href="/artists" class="musica-button">Показать всех исполнителей</a>
             </div>
-        </div>
+        </div>        
+
 
         <div class="audio-player-area background-overlay">
             <div class="container">
@@ -55,7 +56,7 @@ results = 6
                         				</div>
                         				<div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
                         				<div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
-                                        <button class="audio-playlist">...</button>
+                                        <button class="audio-playlist" style="color: #fff;">...</button>
                         			</div>
 
                         		</div>
@@ -151,6 +152,28 @@ results = 6
                 remainingDuration: true,
                 volume: .5,
             });
+
+          console.log( $('.audio-playlist-wrapper').css("opacity") );
+
+          $('.audio-playlist').css("cursor", "pointer");
+
+          $('.audio-playlist').click(function(){
+
+            console.log('click');
+
+            if ($('.audio-playlist-wrapper').css("opacity") == 0) {
+
+              $('.audio-playlist-wrapper').css({"opacity":"100", "bottom":"9%"});
+
+            }
+
+            else {
+
+              $('.audio-playlist-wrapper').css({"opacity":"0", "bottom":"-100%"});
+
+            }
+
+          });
 
         });
         //]]>

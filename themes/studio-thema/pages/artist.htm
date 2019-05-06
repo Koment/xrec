@@ -322,7 +322,8 @@ $(document).ready(function(){
     "use strict";
     new jPlayerPlaylist({
         jPlayer: "#musica-jquery-jplayer",
-        cssSelectorAncestor: "#musica-audio-player-container"
+        cssSelectorAncestor: "#musica-audio-player-container",
+
     },
 
     // [
@@ -339,7 +340,9 @@ $(document).ready(function(){
     arr,
 
     {
+
         playlistOptions: {
+
             autoPlay: false,
             loopOnPrevious: true,
             shuffleOnLoop: true,
@@ -347,7 +350,7 @@ $(document).ready(function(){
             displayTime: "show",
             freeItemClass: "jp-playlist-item-free",
         },
-        swfPath: "../js/jquery.jplayer.swf",
+        swfPath: "../js", //jquery.jplayer.swf",
         supplied: "oga, mp3",
         wmode: "window",
         useStateClassSkin: true,
