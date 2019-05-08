@@ -161,81 +161,81 @@ jQuery(document).ready(function () {
 			type: 'iframe', // this is default type
 		});
 	}
-	/** =====================================
-	*  Shop Rating
-	* ===================================== **/
-	function shoprating() {
-         var shopRate = $('.shop-rating');
-         var len = shopRate.length;
-         for (var i = 0; i < len; i++) {
-            var shopRateId = '#' + shopRate[i].id;
-            var dataValue = $(shopRateId).attr('data-value');
-             $(shopRateId).rateYo({
-                rating: dataValue,
-                starWidth: "13px",
-				normalFill: "#fff",
-				spacing   : "5px",
-				ratedFill: "#ff4e00"
-            });
-         }
-    }
-    if($('.shop-rating').length) {
-        shoprating();
-    }
-	/** =====================================
-	*  Shop Item Cart
-	* ===================================== **/
-	$('.item-quantity .increment-button').on('click', function(){
-		var pqty = $('.item-quantity .product-quantity').html();
-		pqty++;
-		$('.item-quantity .product-quantity').html(pqty);
-	});
-	$('.item-quantity .decrement-button').on('click', function(){
-		var pqty = $('.item-quantity .product-quantity').html();
-		if(pqty>1){
-			pqty--;
-		}
-		$('.item-quantity .product-quantity').html(pqty);
-	});
-	/** =====================================
-	*  Item price
-	* ===================================== **/
-	$('.shop-cart-item .increment-button').on('click', function(){
-		var $shopCartItemParent = $(this).parents('.shop-cart-item'),
-		pqty = $shopCartItemParent.find('.product-quantity').html();
-		pqty++;
-		$shopCartItemParent.find('.product-quantity').html(pqty);
-		var itemPrice = $shopCartItemParent.find('.price span').html();
-		$shopCartItemParent.find('.total-price span').html(pqty * itemPrice);
-
-		var totalCost = 0;
-		$('.shop-cart-item').find('.total-price span').each(function (){
-		  var data = $(this).html();
-		  data *= 1;
-		  totalCost += data;
-		});
-		$('.cart-total-cost span span').html(totalCost);
-	});
-	$('.shop-cart-item .decrement-button').on('click', function(){
-		var $shopCartItemParent = $(this).parents('.shop-cart-item'),
-		 	pqty = $shopCartItemParent.find('.product-quantity').html();
-		if(pqty>0){
-			pqty--;
-		}
-		$shopCartItemParent.find('.product-quantity').html(pqty);
-		var itemPrice = $shopCartItemParent.find('.price span').html();
-		$shopCartItemParent.find('.total-price span').html(pqty * itemPrice);
-		var totalCost = 0;
-		$('.shop-cart-item').find('.total-price span').each(function (){
-		  var data = $(this).html();
-		  data *= 1;
-		  totalCost += data;
-		});
-		$('.cart-total-cost span span').html(totalCost);
-	});
-	$('.shop-cart-item .cart-close').on('click', function(){
-		$(this).parents('.shop-cart-item').fadeOut(1000);
-	});
+	// /** =====================================
+	// *  Shop Rating
+	// * ===================================== **/
+	// function shoprating() {
+  //        var shopRate = $('.shop-rating');
+  //        var len = shopRate.length;
+  //        for (var i = 0; i < len; i++) {
+  //           var shopRateId = '#' + shopRate[i].id;
+  //           var dataValue = $(shopRateId).attr('data-value');
+  //            $(shopRateId).rateYo({
+  //               rating: dataValue,
+  //               starWidth: "13px",
+	// 			normalFill: "#fff",
+	// 			spacing   : "5px",
+	// 			ratedFill: "#ff4e00"
+  //           });
+  //        }
+  //   }
+  //   if($('.shop-rating').length) {
+  //       shoprating();
+  //   }
+	// /** =====================================
+	// *  Shop Item Cart
+	// * ===================================== **/
+	// $('.item-quantity .increment-button').on('click', function(){
+	// 	var pqty = $('.item-quantity .product-quantity').html();
+	// 	pqty++;
+	// 	$('.item-quantity .product-quantity').html(pqty);
+	// });
+	// $('.item-quantity .decrement-button').on('click', function(){
+	// 	var pqty = $('.item-quantity .product-quantity').html();
+	// 	if(pqty>1){
+	// 		pqty--;
+	// 	}
+	// 	$('.item-quantity .product-quantity').html(pqty);
+	// });
+	// /** =====================================
+	// *  Item price
+	// * ===================================== **/
+	// $('.shop-cart-item .increment-button').on('click', function(){
+	// 	var $shopCartItemParent = $(this).parents('.shop-cart-item'),
+	// 	pqty = $shopCartItemParent.find('.product-quantity').html();
+	// 	pqty++;
+	// 	$shopCartItemParent.find('.product-quantity').html(pqty);
+	// 	var itemPrice = $shopCartItemParent.find('.price span').html();
+	// 	$shopCartItemParent.find('.total-price span').html(pqty * itemPrice);
+	//
+	// 	var totalCost = 0;
+	// 	$('.shop-cart-item').find('.total-price span').each(function (){
+	// 	  var data = $(this).html();
+	// 	  data *= 1;
+	// 	  totalCost += data;
+	// 	});
+	// 	$('.cart-total-cost span span').html(totalCost);
+	// });
+	// $('.shop-cart-item .decrement-button').on('click', function(){
+	// 	var $shopCartItemParent = $(this).parents('.shop-cart-item'),
+	// 	 	pqty = $shopCartItemParent.find('.product-quantity').html();
+	// 	if(pqty>0){
+	// 		pqty--;
+	// 	}
+	// 	$shopCartItemParent.find('.product-quantity').html(pqty);
+	// 	var itemPrice = $shopCartItemParent.find('.price span').html();
+	// 	$shopCartItemParent.find('.total-price span').html(pqty * itemPrice);
+	// 	var totalCost = 0;
+	// 	$('.shop-cart-item').find('.total-price span').each(function (){
+	// 	  var data = $(this).html();
+	// 	  data *= 1;
+	// 	  totalCost += data;
+	// 	});
+	// 	$('.cart-total-cost span span').html(totalCost);
+	// });
+	// $('.shop-cart-item .cart-close').on('click', function(){
+	// 	$(this).parents('.shop-cart-item').fadeOut(1000);
+	// });
 	/** =====================================
 	*  Nice Scroll
 	* ===================================== **/
@@ -289,3 +289,30 @@ jQuery(document).ready(function () {
 
 
 });
+
+var list = [];
+
+function getlist(track){
+
+	console.log('getlist');
+	// console.log(track);
+
+	// var list = [];
+
+	tmp = {
+					title:track[0].file_name,
+					artist:'',
+					mp3:track[0].path,
+					poster:'',
+				};
+
+	list.push(tmp);
+
+	console.log(list);
+
+}
+
+function takelist(){
+	console.log('takelist');
+
+}

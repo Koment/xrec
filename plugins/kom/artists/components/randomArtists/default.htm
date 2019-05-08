@@ -1,6 +1,12 @@
 {% set randomArtists = __SELF__.randomArtists %}
 
 
+<script type="text/javascript">
+
+  var list = [];
+
+</script>
+
 <div class="row row-eq-height">
 
   {% for artist in randomArtists %}
@@ -31,6 +37,34 @@
 
 
     {% endspaceless %}
+
+
+    <script type="text/javascript">
+
+          getlist({{ artist.tracks|json_encode()|raw }});
+
+          var track = {{ artist.tracks|json_encode()|raw }}
+
+          // var j = 0;
+          //
+          // while(j < track.length){
+
+            tmp = {
+                    title:track[0].file_name,
+                    artist:{{ artist.name|json_encode()|raw }},
+                    mp3:track[0].path,
+                    poster:{{ artist.poster|json_encode()|raw }},
+                  };
+
+            list.push(tmp);
+
+          //   j++;
+          //
+          // }
+
+        </script>
+
+
 
     {% else %}
         <li class="no-data">{{ noRecordsMessage }}</li>

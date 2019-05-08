@@ -1129,8 +1129,9 @@ textarea {
 
 .audio-playlist-wrapper {
   position: fixed;
+  width: 50%;
   z-index: -100;
-  left: 0;
+  /* left: 0; */
   right: 0;
   bottom: -100%;
   text-align: center;
@@ -1156,7 +1157,7 @@ textarea {
 .audio-playlist-wrapper .jp-playlist {
   text-align: left;
   margin-left: auto;
-  max-width: 500px;
+  /* max-width: 500px; */
   background: rgba(0, 0, 0, 0.7);
 }
 
@@ -1189,6 +1190,11 @@ textarea {
 }*/
 .overflow-y {
   overflow: hidden;
+}
+
+.jp-details{
+  display: block !important;
+  /* white-space: pre; */
 }
 
 /* -----------------------------------
@@ -2834,4 +2840,3 @@ textarea {
 #social-sidebar:hover {
   left: -90px;
 }
-
