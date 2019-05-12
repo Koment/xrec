@@ -54,10 +54,6 @@ fields:
                     label: Имя
                     span: auto
                     type: text
-                musicman_age:
-                    label: Возраст
-                    span: auto
-                    type: text
                 musicman_inst:
                     label: Позиция
                     span: auto

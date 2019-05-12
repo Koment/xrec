@@ -290,29 +290,29 @@ jQuery(document).ready(function () {
 
 });
 
-var list = [];
-
-function getlist(track){
-
-	console.log('getlist');
-	// console.log(track);
-
-	// var list = [];
-
-	tmp = {
-					title:track[0].file_name,
-					artist:'',
-					mp3:track[0].path,
-					poster:'',
-				};
-
-	list.push(tmp);
-
-	console.log(list);
-
-}
-
-function takelist(){
-	console.log('takelist');
-
-}
+// var list = [];
+//
+// function getlist(track){
+//
+// 	console.log('getlist');
+// 	// console.log(track);
+//
+// 	// var list = [];
+//
+// 	tmp = {
+// 					title:track[0].file_name,
+// 					artist:'',
+// 					mp3:track[0].path,
+// 					poster:'',
+// 				};
+//
+// 	list.push(tmp);
+//
+// 	console.log(list);
+//
+// }
+//
+// function takelist(){
+// 	console.log('takelist');
+//
+// }

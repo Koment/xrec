@@ -95,9 +95,12 @@ notFoundMessage = "Record not found"
                     <div class="jp-type-playlist">
 
                         <div class="audio-table">
+                          <div id="musica-jquery-jplayer" class="jp-jplayer"></div>
+
                           <div class="jp-details">
-                              <div class="jp-title" aria-label="title">&nbsp;<br><br></div>
+                              <div class="jp-title" aria-label="title">&nbsp;</div>
                           </div>
+                          <div class="clear"></div>
                           <!--/title-->
                             <div class="jp-controls">
                                 <button class="jp-previous"></button>
@@ -122,7 +125,7 @@ notFoundMessage = "Record not found"
                                     </div>
                                     <div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
                                     <div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
-                                    <button class="audio-playlist">...</button>
+                                    <!-- <button class="audio-playlist">...</button> -->
                                 </div>
 
                             </div>
@@ -134,7 +137,7 @@ notFoundMessage = "Record not found"
                                 </div>
                             </div>
 
-                           <div id="musica-jquery-jplayer" class="jp-jplayer"></div>
+
                         </div>
                         <div class="audio-playlist-wrapper">
                             <div id="playlist-wrapper">
@@ -165,26 +168,28 @@ notFoundMessage = "Record not found"
 
 <script type="text/javascript">
 
-var track = {{ record.tracks|json_encode()|raw }}
+  var arr = [];
 
-var arr = [];
+</script>
 
-var i = 0;
+{% for track in record.tracks %}
 
-while(i < track.length){
+  <script>
 
-  tmp = {
-          title:track[i].file_name,
-          artist:{{ record.name|json_encode()|raw }},
-          mp3:track[i].path,
-          poster:{{ record.poster|json_encode()|raw }},
-        };
+      tmp = {
+              title:{{ track.file_name|json_encode()|raw }},
+              artist:{{ record.name|json_encode()|raw }},
+              mp3:{{ track.path|json_encode()|raw }},
+              poster:{{ record.poster.path|json_encode()|raw }},
+            };
 
-  arr[i] = tmp;
+      arr.push(tmp);
 
-  i++;
+  </script>
 
-}
+{% endfor %}
+
+<script type="text/javascript">
 
 //<![CDATA[
 $(document).ready(function(){

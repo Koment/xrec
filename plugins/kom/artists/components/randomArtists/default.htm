@@ -41,28 +41,16 @@
 
     <script type="text/javascript">
 
-          getlist({{ artist.tracks|json_encode()|raw }});
-
-          var track = {{ artist.tracks|json_encode()|raw }}
-
-          // var j = 0;
-          //
-          // while(j < track.length){
-
             tmp = {
-                    title:track[0].file_name,
+                    title:{{ artist.tracks[0].file_name|json_encode()|raw }},
                     artist:{{ artist.name|json_encode()|raw }},
-                    mp3:track[0].path,
-                    poster:{{ artist.poster|json_encode()|raw }},
+                    mp3:{{ artist.tracks[0].path|json_encode()|raw }},
+                    poster:{{ artist.poster.path|json_encode()|raw }},
                   };
 
             list.push(tmp);
 
-          //   j++;
-          //
-          // }
-
-        </script>
+    </script>
 
 
 

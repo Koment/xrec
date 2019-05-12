@@ -33,9 +33,11 @@ results = 6
                         <div id="tr-player"></div>
                     	<div class="jp-type-playlist">
                             <div class="audio-table">
+                              <div id="musica-jquery-jplayer" class="jp-jplayer"></div>
                               <div class="jp-details">
                                   <div class="jp-title" aria-label="title">&nbsp;</div>
                               </div><!--/title-->
+                              <div class="clear"></div>
                                 <div class="jp-controls">
                                     <button class="jp-previous"></button>
                                     <button class="jp-play"></button>
@@ -71,7 +73,7 @@ results = 6
                                     </div>
                                 </div>
 
-                                <div id="musica-jquery-jplayer" class="jp-jplayer"></div>
+
                             </div>
                     		<div class="audio-playlist-wrapper">
                                 <div class="container" id="playlist-wrapper">
@@ -128,7 +130,7 @@ results = 6
 
             if ($('.audio-playlist-wrapper').css("opacity") == 0) {
 
-              $('.audio-playlist-wrapper').css({"opacity":"100", "bottom":"9%"});
+              $('.audio-playlist-wrapper').css({"opacity":"100", "bottom": $('.audio-player-area').css("height") });
 
             }
 
