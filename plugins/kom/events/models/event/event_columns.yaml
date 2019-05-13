@@ -1,0 +1,15 @@
+columns:
+    title:
+        label: Событие
+        type: text
+        searchable: true
+        sortable: true
+    location:
+        label: 'Место проведения'
+        type: text
+        searchable: true
+        sortable: true
+    event_date:
+        label: 'Дата проведения'
+        type: datetime
+        sortable: true

@@ -1,0 +1,4 @@
+title: Events
+modelClass: Kom\Events\Models\Event
+toolbar:
+    buttons: reorder_toolbar

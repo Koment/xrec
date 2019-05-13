@@ -14,7 +14,7 @@
                             </div>
                             <ul class="menu-list">
                                 <li><a href="\">Главная</a></li>
-                                <li><a href="\artists">Исполнители</a>
+                                <li><a href= {% if this.page.id == 'homepage' %} "#artists" {% else %} "\artists" {% endif %} >Исполнители</a>
 								<!--	<ul class="menu-inner">
 										<li><a href="#">NnN</a></li>
 										<li><a href="artists/a-crime/index.html">А. Крайм</a></li>
@@ -26,10 +26,10 @@
 										<li><a href="artists/dve-barcuhi/index.html">Двэ Барцухи</a></li>
 									</ul> -->
                            </li>
-								                <li><a href="#event-list">События</a></li>
-                                <li><a href="#news">Новости</a></li>
+								                <li><a href= {% if this.page.id == 'homepage' %} "#event-list" {% else %} "\events" {% endif %} >События</a></li>
+                                <li><a href= {% if this.page.id == 'homepage' %} "#news" {% else %} "#" {% endif %}>Новости</a></li>
                                 <li><a href="\contact">Контакты</a></li>
-                								<li><a href="#mastering.html">Сведение ОНЛАЙН</a></li>
+                								<li><a href= {% if this.page.id == 'homepage' %} "#ggg" {% else %} "\" {% endif %}>Сведение ОНЛАЙН</a></li>
                 								<li><a href="http://music.x-records.ru">Муз. сеть</a></li>
                            </ul>
                        </nav>

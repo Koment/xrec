@@ -1,0 +1,11 @@
+plugin:
+    name: 'kom.events::lang.plugin.name'
+    description: 'kom.events::lang.plugin.description'
+    author: Kom
+    icon: oc-icon-beer
+    homepage: ''
+navigation:
+    main-menu-item2:
+        label: Events
+        url: kom/events/events
+        icon: icon-beer

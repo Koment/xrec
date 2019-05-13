@@ -1,0 +1,11 @@
+name: Events
+modelClass: Kom\Events\Models\Event
+form: $/kom/events/models/event/event_fields.yaml
+defaultRedirect: kom/events/events
+create:
+    redirect: 'kom/events/events/update/:id'
+    redirectClose: kom/events/events
+update:
+    redirect: kom/events/events
+    redirectClose: kom/events/events
+preview: {  }

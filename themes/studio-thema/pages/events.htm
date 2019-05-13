@@ -1,0 +1,107 @@
+title = "События"
+url = "/events"
+layout = "studio-dark"
+description = "Все события"
+is_hidden = 0
+
+[builderList]
+modelClass = "Kom\Events\Models\Event"
+scope = "-"
+scopeValue = "{{ :scope }}"
+displayColumn = "title"
+noRecordsMessage = "No records found"
+detailsPage = "event"
+detailsKeyColumn = "slug"
+detailsUrlParameter = "slug"
+pageNumber = "{{ :page }}"
+==
+{% set records = builderList.records %}
+{% set displayColumn = builderList.displayColumn %}
+{% set noRecordsMessage = builderList.noRecordsMessage %}
+{% set detailsPage = builderList.detailsPage %}
+{% set detailsKeyColumn = builderList.detailsKeyColumn %}
+{% set detailsUrlParameter = builderList.detailsUrlParameter %}
+
+
+{% partial 'sections/banner.htm' %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="section-heading">
+                <h2>Все события</h2>
+            </div>
+        </div>
+    </div>
+
+
+{% for record in records %}
+    <div class="pdb80">
+
+        <div class="upcoming-event">
+
+            <div class="fornt-part">
+                <div class="date">{{ record.event_date }}</div>
+                <div class="singer">{{record.title}}</div>
+                <div class="venue">{{record.location}}</div>
+                <div class="detail text-right">
+
+                  {% if detailsPage %}
+                      <a href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}" class="musica-button-two">Подробнее</a>
+                  {% endif %}
+
+                </div>
+            </div>
+            <div class="back-part">
+                <div class="event-counter">
+                    <div id="event-counter-one" class="musica-counter-active" data-value-year="2019" data-value-month="06" data-value-day="2" data-value-zone="+10"></div>
+                </div>
+            </div>
+
+
+        </div><!--/.upcoming-event-->
+
+    </div>
+
+{% endfor %}
+
+</div>
+
+<!-- <ul class="record-list">
+    {% for record in records %}
+        <li>
+            {# Use spaceless tag to remove spaces inside the A tag. #}
+            {% spaceless %}
+                {% if detailsPage %}
+                    <a href="{{ detailsPage|page({ (detailsUrlParameter): attribute(record, detailsKeyColumn) }) }}">
+                {% endif %}
+
+                {{ attribute(record, displayColumn) }}
+
+                {% if detailsPage %}
+                    </a>
+                {% endif %}
+            {% endspaceless %}
+        </li>
+    {% else %}
+        <li class="no-data">{{ noRecordsMessage }}</li>
+    {% endfor %}
+</ul> -->
+
+{% if records.lastPage > 1 %}
+    <ul class="pagination">
+        {% if records.currentPage > 1 %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage-1) }) }}">&larr; Prev</a></li>
+        {% endif %}
+
+        {% for page in 1..records.lastPage %}
+            <li class="{{ records.currentPage == page ? 'active' : null }}">
+                <a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}">{{ page }}</a>
+            </li>
+        {% endfor %}
+
+        {% if records.lastPage > records.currentPage %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage+1) }) }}">Next &rarr;</a></li>
+        {% endif %}
+    </ul>
+{% endif %}

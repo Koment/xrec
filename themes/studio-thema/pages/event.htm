@@ -1,0 +1,36 @@
+title = "Событие"
+url = "/event/:slug"
+layout = "studio-dark"
+description = "Подробное описание события"
+is_hidden = 0
+
+[builderDetails]
+modelClass = "Kom\Events\Models\Event"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+==
+{% set record = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+{% partial 'sections/banner.htm' %}
+
+<div class="container">
+
+    {% if record %}
+        <h1>{{ record.title }}</h1>
+
+        <h3>{{ record.location }}</h3>
+
+        <p>{{ record.description|raw }}</p>
+
+        <h5>Дата:</h5>
+        <h2>{{ record.event_date }}</h2>
+
+    {% else %}
+        {{ notFoundMessage }}
+    {% endif %}
+
+</div>
