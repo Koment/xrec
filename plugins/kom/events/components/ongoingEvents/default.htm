@@ -1,0 +1,32 @@
+{% set ongoingEvents = __SELF__.ongoingEvents %}
+
+
+<div class="section-heading text-center" style="position: relative;">
+    <h2>Ближайшие события</h2>
+</div>
+
+{% for event in ongoingEvents %}
+
+<div class="pdb80">
+  <div class="upcoming-event">
+
+
+
+      <div class="fornt-part">
+          <div class="date">{{ event.event_date }}</div>
+          <div class="singer">{{ event.title }}</div>
+          <div class="venue">{{ event.location }}</div>
+          <div class="detail text-right"><a href="/event/{{ event.slug }}" class="musica-button-two">Подробнее</a></div>
+      </div>
+      <div class="back-part">
+          <div class="event-counter">
+              <div id="event-counter-one" class="musica-counter-active" data-value-year="2019" data-value-month="06" data-value-day="2" data-value-zone="+3"></div>
+              <div class='countdown' data-date="2019-06-25" data-time="18:30"></div>
+          </div>
+      </div>
+
+
+  </div><!--/.upcoming-event-->
+</div>
+
+{% endfor %}

@@ -28,7 +28,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'October CMS',
+    'name' => 'X-Records studio site',
 
     /*
     |--------------------------------------------------------------------------
@@ -56,13 +56,13 @@ return [
     | -------- STOP! --------
     | Before you change this value, consider carefully if that is actually
     | what you want to do. It is HIGHLY recommended that this is always set
-    | to UTC (as your server & DB timezone should be as well) and instead you 
+    | to UTC (as your server & DB timezone should be as well) and instead you
     | use cms.backendTimezone to set the default timezone used in the backend
     | to display dates & times.
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'UTC+3',
 
     /*
     |--------------------------------------------------------------------------
@@ -75,7 +75,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ru',
 
     /*
     |--------------------------------------------------------------------------

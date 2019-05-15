@@ -108,26 +108,26 @@ jQuery(document).ready(function () {
 	/*** =====================================
     * Musica Events Counter
     * =====================================***/
-	function musicaEvents() {
-        var musicaEvent = $('.musica-counter-active');
-        var len = musicaEvent.length;
-        for (var i = 0; i < len; i++) {
-            var musicaEventId = '#' + musicaEvent[i].id,
-            dataValueYear = $(musicaEventId).attr('data-value-year'),
-						dataValueMonth = $(musicaEventId).attr('data-value-month'),
-						dataValueDay = $(musicaEventId).attr('data-value-day'),
-						dataValueZone = $(musicaEventId).attr('data-value-zone');
-            $(musicaEventId).countdown({
-							labels: ['Лет', 'Месяцев', 'Недель', 'Дней', 'Часов', 'Минут', 'Секунд'],
-		        	until: $.countdown.UTCDate(dataValueZone, dataValueYear, dataValueMonth, dataValueDay),
-		        	format: 'dHMS',
-		        padZeroes: true
-		    });
-        }
-    }
-    if ($('.musica-counter-active').length) {
-        musicaEvents();
-    }
+	// function musicaEvents() {
+  //       var musicaEvent = $('.musica-counter-active');
+  //       var len = musicaEvent.length;
+  //       for (var i = 0; i < len; i++) {
+  //           var musicaEventId = '#' + musicaEvent[i].id,
+  //           dataValueYear = $(musicaEventId).attr('data-value-year'),
+	// 					dataValueMonth = $(musicaEventId).attr('data-value-month'),
+	// 					dataValueDay = $(musicaEventId).attr('data-value-day'),
+	// 					dataValueZone = $(musicaEventId).attr('data-value-zone');
+  //           $(musicaEventId).countdown({
+	// 						labels: ['Лет', 'Месяцев', 'Недель', 'Дней', 'Часов', 'Минут', 'Секунд'],
+	// 	        	until: $.countdown.UTCDate(dataValueZone, dataValueYear, dataValueMonth, dataValueDay),
+	// 	        	format: 'dHMS',
+	// 	        padZeroes: true
+	// 	    });
+  //       }
+  //   }
+  //   if ($('.musica-counter-active').length) {
+  //       musicaEvents();
+  //   }
 	/*** =====================================
     * Gallery Filter
     * ==================================== ***/
