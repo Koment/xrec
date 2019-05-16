@@ -4,6 +4,8 @@ use Cms\Classes\ComponentBase;
 
 use Kom\Events\Models\Event;
 
+use Carbon\Carbon;
+
 class ongoingEvents extends ComponentBase {
 
     public function ComponentDetails() {
@@ -23,7 +25,20 @@ class ongoingEvents extends ComponentBase {
 
     protected function getOngoingEvents(){
 
-      return Event::all();
+      $now = Carbon::now();
+
+      $ongoing = Event::all()->where('event_date', '>', $now);
+
+      if (count($ongoing) > 0) {
+
+        for ($i = 0; $i < count($ongoing); $i++){
+
+          $ongoing[$i]->attributes['event_date'] = explode(' ', $ongoing[$i]->attributes['event_date']);
+        }
+
+        return $ongoing;
+
+      }
 
     }
 

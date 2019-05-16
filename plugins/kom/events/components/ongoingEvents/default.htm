@@ -1,5 +1,8 @@
 {% set ongoingEvents = __SELF__.ongoingEvents %}
 
+{% if ongoingEvents %}
+
+{{ ongoingEvents }}
 
 <div class="section-heading text-center" style="position: relative;">
     <h2>Ближайшие события</h2>
@@ -7,21 +10,19 @@
 
 {% for event in ongoingEvents %}
 
-<div class="pdb80">
+<div class="pdb80" style="background: url('{{ event.poster.path }}');">
   <div class="upcoming-event">
 
-
-
       <div class="fornt-part">
-          <div class="date">{{ event.event_date }}</div>
+          <div class="date">{{ event.event_date[0] }} / {{ event.event_date[1] }}</div>
           <div class="singer">{{ event.title }}</div>
           <div class="venue">{{ event.location }}</div>
           <div class="detail text-right"><a href="/event/{{ event.slug }}" class="musica-button-two">Подробнее</a></div>
       </div>
       <div class="back-part">
           <div class="event-counter">
-              <div id="event-counter-one" class="musica-counter-active" data-value-year="2019" data-value-month="06" data-value-day="2" data-value-zone="+3"></div>
-              <div class='countdown' data-date="2019-06-25" data-time="18:30"></div>
+              <div>{{ event.event_date[0] }} {{ event.event_date[1] }} | {{ event.title }} | {{ event.location }}</div>
+              <div class='countdown' data-date="{{ event.event_date[0] }}" data-time="{{ event.event_date[1] }}"></div>
           </div>
       </div>
 
@@ -29,4 +30,15 @@
   </div><!--/.upcoming-event-->
 </div>
 
+
+
 {% endfor %}
+
+{% else %}
+
+<div class="section-heading text-center" style="position: relative;">
+    <h2>Нет ближайших событий...</h2>
+</div>
+
+
+{% endif %}

@@ -1,0 +1,93 @@
+title = "News"
+url = "/news"
+layout = "studio-dark"
+description = "Новости"
+is_hidden = 0
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+postsPerPage = 10
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "news"
+postPage = "news-post"
+==
+{% partial 'sections/banner.htm' %}
+
+<div class="container">
+
+{% set posts = blogPosts.posts %}
+
+<div class="row row-eq-height">
+
+{% for post in posts %}
+
+
+
+  <div class="col-md-4">
+    <div class="item-preview mb-5" style="background: url('{{ post.featured_images[0].path }}'); background-position: center; background-repeat: no-repeat; background-size: cover; overflow: hidden; height: 100%; border-radius: 10px;">
+
+
+    <div style="height: 50%; ">
+    </div>
+
+    <div style="height: 50%; background: #17181a;">
+      <div class="item-preview-title">{{ post.title }}</div>
+      <div class="item-preview-description">A clean blog theme</div>
+    </div>
+
+    </div>
+  </div>
+
+
+  <div class="col-md-4 col-sm-6 col-xs-12">
+                <div class="blog-post">
+                    <div class="gradent-overlay"></div>
+
+                    <img src="news/01.09.17.jpg" alt="Новый альбом Franc82R" class="img-responsive">{{ post.title }}
+                    <div class="post-date base-gradient-bg">
+                        {{ post.published_at|date('M d, Y') }}
+                    </div>
+
+                    <br>
+                    <p><h3><a href="{{ post.url }}">{{ post.title }}</a></h3>{{ post.summary|raw }}</p>
+                    <br>
+                    <br>
+                    <a href="{{ post.url }}" class="musica-button-two">подробнее...</a>
+                    <p>
+                </div><!--/.blog-post-->
+    </div>
+
+    {% else %}
+        <li class="no-data">{{ blogPosts.noPostsMessage }}</li>
+    {% endfor %}
+
+  </div>
+
+
+
+  {% if posts.lastPage > 1 %}
+      <ul class="pagination">
+          {% if posts.currentPage > 1 %}
+              <li><a href="{{ this.page.baseFileName|page({ (blogPosts.pageParam): (posts.currentPage-1) }) }}">&larr; Prev</a></li>
+          {% endif %}
+
+          {% for page in 1..posts.lastPage %}
+              <li class="{{ posts.currentPage == page ? 'active' : null }}">
+                  <a href="{{ this.page.baseFileName|page({ (blogPosts.pageParam): page }) }}">{{ page }}</a>
+              </li>
+          {% endfor %}
+
+          {% if posts.lastPage > posts.currentPage %}
+              <li><a href="{{ this.page.baseFileName|page({ (blogPosts.pageParam): (posts.currentPage+1) }) }}">Next &rarr;</a></li>
+          {% endif %}
+      </ul>
+  {% endif %}
+
+
+
+    <div class="text-center pdt40">
+        <a href="/news" class="musica-button">Все новости</a>
+    </div>
+
+</div>

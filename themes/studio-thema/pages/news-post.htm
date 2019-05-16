@@ -1,0 +1,10 @@
+title = "News Post"
+url = "/news/post/:slug"
+layout = "studio-dark"
+is_hidden = 0
+
+[blogPost]
+slug = "{{ :slug }}"
+categoryPage = "news"
+==
+{% component 'blogPost' %}

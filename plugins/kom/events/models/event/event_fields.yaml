@@ -24,3 +24,14 @@ fields:
             field: title
             type: slug
         type: text
+    eventimg:
+        label: 'Event poster'
+        span: auto
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        imageWidth: '150'
+        imageHeight: '150'
+        type: fileupload
