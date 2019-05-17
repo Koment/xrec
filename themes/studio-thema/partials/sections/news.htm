@@ -1,122 +1,52 @@
+[blogPosts]
+pageNumber = "{{ :page }}"
+postsPerPage = 6
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "news"
+postPage = "news-post"
+==
 <section class="news-section section-padding" id="news">
         <div class="container">
             <div class="section-heading text-center">
                 <h2>Новости</h2>
             </div>
 
+{% set posts = blogPosts.posts %}
+
 
     <div class="row row-eq-height">
 
 
-			<div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="blog-post">
-                        <div class="gradent-overlay"></div>
-                        <img src="news/01.09.17.jpg" alt="Новый альбом Franc82R" class="img-responsive">
-                        <div class="post-date base-gradient-bg">
-                            <span>01</span>Сентября<br>2017
-                        </div>
-                        <br>
-                        <p>Мы открыли музыкальную соц. сеть в тестовом режиме, загружайте, слушайте и делитесь своими треками.</p>
-            						<br>
-            						<br>
-            						<a href="http://music.x-records.ru" class="musica-button-two">Посетить</a>
-            						<p>
-                    </div><!--/.blog-post-->
+      {% for post in posts %}
+
+        <div class="col-md-4">
+
+          <div class="item-preview mb-5" style="background: url('{{ post.featured_images[0].path }}'); background-position: center; background-repeat: no-repeat; background-size: cover; overflow: hidden; height: 100%; border-radius: 10px;">
+
+          <a href="{{ post.url }}">
+            <div style="height: 50%; ">
+              <div class="post-date base-gradient-bg">
+                  {{ post.published_at|date('d / m, Y') }}
+              </div>
+            </div>
+
+            <div style="height: 50%; background: rgba(29, 27, 27, 0.9); padding: 10px 20px;">
+              <div class="item-preview-title"><h3>{{ post.title }}</h3></div>
+              <div class="item-preview-description">{{ post.summary|raw }}</div>
+            </div>
+          </a>
+          </div>
         </div>
 
-
-			<div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="blog-post">
-                        <div class="gradent-overlay"></div>
-                        <img src="news/25.08.17.jpg" alt="Новый альбом Franc82R" class="img-responsive">
-                        <div class="post-date base-gradient-bg">
-                            <span>25</span>Августа<br>2017
-                        </div>
-                        <br>
-                        <p>Салют всем !!! Вот и вышел альбом под названием ДНО!!!</p>
-						<br>
-						<br>
-						<br>
-						<a href="https://vk.com/fregion2000?w=wall282278380_573" class="musica-button-two">Подробнее</a>
-						<p>
-                    </div><!--/.blog-post-->
-                </div>
-
-
-			<div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="blog-post">
-                        <div class="gradent-overlay"></div>
-                        <img src="news/21.08.17.jpg" alt="Конкурс" class="img-responsive">
-                        <div class="post-date base-gradient-bg">
-                            <span>21</span>Августа<br>2017
-                        </div>
-                        <br>
-                        <p>В связи с годовщиной группы Поиск музыкантов Симферополь Крым, объявляется конкурс!</p>
-						<br>
-						<br>
-						<br>
-						<a href="https://vk.com/ischu_muzyikanta" class="musica-button-two">Подробнее</a>
-						<p>
-                    </div><!--/.blog-post-->
-                </div>
-
-
-				<div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="blog-post">
-                        <div class="gradent-overlay"></div>
-                        <img src="news/20.08.17.jpg" alt="Репетиционка" class="img-responsive">
-                        <div class="post-date base-gradient-bg">
-                            <span>20</span>Августа<br>2017
-                        </div>
-                        <br>
-                        <p>На сегодняшний день репетиционная база функционирует в полной комплектации, цена за 2 часа репетиции состовляет 500₽.</p>
-						<br>
-						<a href="contact.php" class="musica-button-two">Контакты</a>
-						<p>
-                    </div><!--/.blog-post-->
-                </div>
-
-
-
-				<div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="blog-post">
-                        <div class="gradent-overlay"></div>
-                        <img src="news/25.07.17.jpg" alt="FresH" class="img-responsive">
-                        <div class="post-date base-gradient-bg">
-                            <span>25</span>Июля<br>2017
-                        </div>
-                        <br>
-                        <p>Новый #FresH #НахуйХайп #ЕР #2017 </p>
-						<br>
-						<br>
-						<br>
-						<a href="https://vk.com/x_records?w=wall18846928_10645" class="musica-button-two">Подробнее</a>
-						<p>
-                    </div><!--/.blog-post-->
-                </div>
-
-
-
-				<div class="col-md-4 col-sm-6 col-xs-12">
-                    <div class="blog-post">
-                        <div class="gradent-overlay"></div>
-                        <img src="news/25.05.17.jpg" alt="Акция" class="img-responsive">
-                        <div class="post-date base-gradient-bg">
-                            <span>25</span>Мая<br>2017
-                        </div>
-						<br>
-                        <p>У нас проходит акция, которая будет длится 2 месяца. 35% на запись и сведение одного трека (1000 руб.) за полностью готовый трек. Время записи неограничено.</p>
-						<a href="contact.php" class="musica-button-two">Контакты</a>
-						<p>
-                    </div><!--/.blog-post-->
-                </div>
+          {% else %}
+              <li class="no-data">{{ blogPosts.noPostsMessage }}</li>
+          {% endfor %}
 
       </div>
 
-
-
             <div class="text-center pdt40 pdb25">
-                <a href="news.html" class="musica-button">Показать все новости</a>
+                <a href="\news" class="musica-button">Показать все новости</a>
             </div>
         </div>
     </section>

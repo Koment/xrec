@@ -2197,6 +2197,16 @@ textarea {
 .blog-gallery-post.owl-carousel .owl-nav .owl-prev{
   left:10px;
 }
+
+/*----------- new blog --------------*/
+
+
+.item-preview-title{
+  margin-bottom: 7px;
+}
+
+
+
 /* -----------------------------------
 ** End Blog
 -------------------------------------*/

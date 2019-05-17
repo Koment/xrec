@@ -9,6 +9,10 @@
 
                         {{ record.name }}
 
+                      {% elseif post.title %}
+
+                        {{ post.title }}
+
                       {% elseif attribute(record, displayColumn) %}
 
                         {{ str_studly( attribute(record, displayColumn) ) }}

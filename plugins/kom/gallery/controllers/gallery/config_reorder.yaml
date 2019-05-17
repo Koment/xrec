@@ -1,0 +1,4 @@
+title: Gallery
+modelClass: Kom\Gallery\Models\Gallery
+toolbar:
+    buttons: reorder_toolbar

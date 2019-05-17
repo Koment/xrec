@@ -1,0 +1,11 @@
+name: Gallery
+modelClass: Kom\Gallery\Models\Gallery
+form: $/kom/gallery/models/gallery/gallery_fields.yaml
+defaultRedirect: kom/gallery/gallery
+create:
+    redirect: 'kom/gallery/gallery/update/:id'
+    redirectClose: kom/gallery/gallery
+update:
+    redirect: kom/gallery/gallery
+    redirectClose: kom/gallery/gallery
+preview: {  }

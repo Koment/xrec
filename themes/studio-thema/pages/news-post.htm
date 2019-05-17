@@ -1,4 +1,4 @@
-title = "News Post"
+title = "Новости"
 url = "/news/post/:slug"
 layout = "studio-dark"
 is_hidden = 0
@@ -7,4 +7,44 @@ is_hidden = 0
 slug = "{{ :slug }}"
 categoryPage = "news"
 ==
-{% component 'blogPost' %}
+{% set post = blogPost.post %}
+
+{% partial 'sections/banner.htm' %}
+
+<div class="main-content pdt40 pdb90">
+    <div class="container">
+
+      <h1>{{ post.title }}</h1>
+
+      <div class="content">{{ post.content_html|raw }}</div>
+
+          <div class="gallery-grid">
+
+            {% if post.featured_images.count %}
+
+              {% for image in post.featured_images %}
+
+                <div class="grid-item painting poster recreation">
+                    <img src="{{ image.path }}" class="img-responsive" alt="{{ image.description }}">
+                    <div class="base-gradient-bg overlay"></div>
+                    <a href="{{ image.path }}" class="zoom-button"><i class="ion-ios-plus-empty"></i></a>
+                </div>
+
+              {% endfor %}
+
+            {% endif %}
+
+          </div>
+
+      <p class="info">
+          zaposheno
+          {% if post.categories.count %} in
+              {% for category in post.categories %}
+                  <a href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
+              {% endfor %}
+          {% endif %}
+          | {{ post.published_at|date('d / m, Y') }}
+      </p>
+
+    </div>
+</div>

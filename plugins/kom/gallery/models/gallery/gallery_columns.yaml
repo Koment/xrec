@@ -1,0 +1,11 @@
+columns:
+    title:
+        label: Событие
+        type: text
+        searchable: true
+        sortable: true
+    date:
+        label: Дата
+        type: date
+        searchable: true
+        sortable: true

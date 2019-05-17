@@ -1,0 +1,11 @@
+plugin:
+    name: 'kom.gallery::lang.plugin.name'
+    description: 'kom.gallery::lang.plugin.description'
+    author: Kom
+    icon: oc-icon-picture-o
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: Gallery
+        url: kom/gallery/gallery
+        icon: icon-picture-o

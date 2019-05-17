@@ -1,0 +1,33 @@
+fields:
+    title:
+        label: Событие
+        span: auto
+        type: text
+    slug:
+        label: Slug
+        span: auto
+        preset:
+            field: title
+            type: slug
+        type: text
+    description:
+        label: Описание
+        size: ''
+        span: full
+        type: richeditor
+    date:
+        label: Дата
+        mode: date
+        span: auto
+        type: datepicker
+    gal_photo:
+        label: 'Загрузить фото'
+        span: full
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        imageWidth: '550'
+        imageHeight: '550'
+        type: fileupload
