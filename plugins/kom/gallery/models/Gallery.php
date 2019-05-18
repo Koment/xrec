@@ -32,4 +32,6 @@ class Gallery extends Model
       'gal_photo' => 'System\Models\File',
 
     ];
+
+    
 }

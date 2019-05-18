@@ -48,17 +48,21 @@ class latestPhotos extends ComponentBase {
 
   public function onRun () {
 
+    // dd($this->getLatestPhotos ());
+
     $this->latestPhotos = $this->getLatestPhotos ();
 
   }
 
   protected function getLatestPhotos () {
 
-    // return $latest = File::where('field', 'gal_photo')->get();
+    // return $latest = Gallery::whereIn('id', $this->randomIDs())->get();
 
     return $latest = Gallery::whereIn('id', $this->randomIDs())->get();
 
   }
+
+
 
   protected function randomIDs(){
 
