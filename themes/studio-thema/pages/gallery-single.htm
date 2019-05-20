@@ -1,0 +1,40 @@
+title = "Галлерея"
+url = "/gallery/:slug"
+layout = "studio-dark"
+is_hidden = 0
+
+[builderDetails]
+modelClass = "Kom\Gallery\Models\Gallery"
+identifierValue = "{{ :slug }}"
+modelKeyColumn = "slug"
+displayColumn = "title"
+notFoundMessage = "Record not found"
+==
+{% set record = builderDetails.record %}
+{% set displayColumn = builderDetails.displayColumn %}
+{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+{% partial 'sections/banner.htm' %}
+
+
+{% if record %}
+
+  <div>
+    <div class="gallery-grid">
+
+      {% for foto in record.gal_photo %}
+
+      <div class="grid-item painting poster {{ record.slug }}">
+          <img src="{{ foto.path }}" class="img-responsive" alt="{{ album.title }}">
+          <div class="base-gradient-bg overlay"></div>
+          <a href="{{ foto.path }}" class="zoom-button"><i class="ion-ios-plus-empty"></i></a>
+      </div>
+
+      {% endfor %}
+
+    </div>
+  </div>
+
+{% else %}
+    {{ notFoundMessage }}
+{% endif %}

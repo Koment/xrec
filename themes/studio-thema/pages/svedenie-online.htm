@@ -1,4 +1,18 @@
-{% set title = __SELF__.title %}
+title = "Сведение онлайн"
+url = "/svedenie-online"
+layout = "studio-dark"
+description = "Сведение онлайн"
+is_hidden = 0
+
+[contactform]
+subject = "Заказать сведение онлайн"
+adress = "x-records.ru@yandex.ru"
+==
+
+{% set title = contactform.title %}
+
+{% partial 'sections/banner.htm' %}
+
 <div class="comment-form">
     <h3 class="heading">{{ title }}</h3>
     <form id="contact" data-request="onSend">

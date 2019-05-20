@@ -1,0 +1,71 @@
+title = "Gallery"
+url = "/gallery"
+layout = "studio-dark"
+description = "Галлерея"
+is_hidden = 0
+
+==
+
+use Kom\Gallery\Models\Gallery;
+
+function onStart(){
+
+  $this['gallerys'] = Gallery::orderBy('date', 'desc')->paginate(10);
+
+}
+
+==
+
+{% partial 'sections/banner.htm' %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="section-heading">
+                <h2>Все галереи</h2>
+            </div>
+        </div>
+    </div>
+
+{% for record in gallerys %}
+
+    <div class="pdb80">
+
+      <!-- background:linear-gradient(-45deg, #615e9c 20%, #cc464a 150%) -->
+
+        <div class="upcoming-event">
+
+            <div class="fornt-part">
+                <div class="date">{{ record.date }}</div>
+                <div class="singer">{{record.title}}</div>
+                <div class="venue">{{record.description|raw}}</div>
+                <div class="detail text-right">
+
+                      <a href="/gallery/{{ record.slug }}" class="musica-button-two">Подробнее</a>
+
+                </div>
+            </div>
+            <div class="back-part">
+                <div class="event-counter">
+                  {% for img in record.gal_photo|slice(0,8) %}
+
+                    <div style="height: 132px; width: 132px; float: left; background: url('{{ img.path }}'); background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
+
+                  {% endfor %}
+                </div>
+            </div>
+
+
+        </div><!--/.upcoming-event-->
+
+    </div>
+
+{% endfor %}
+
+<div class="pdt40 text-center">
+
+  {{ gallerys.render|raw }}
+
+</div>
+
+</div>

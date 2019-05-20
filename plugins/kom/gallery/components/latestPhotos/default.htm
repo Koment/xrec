@@ -19,7 +19,7 @@
 
   {% for album in  latestPhotos %}
 
-    {% for foto in album.gal_photo %}
+    {% for foto in album.gal_photo|slice(0,5) %}
 
         <div class="grid-item painting poster {{ album.slug }}">
             <img src="{{ foto.path }}" class="img-responsive" alt="{{ album.title }}">

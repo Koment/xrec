@@ -1,12 +1,15 @@
 <div class="menu-area desktop-menu">
+
+  <div class="logo">
+      <a href="\" class="logo-brand">
+          <img src="{{ 'assets/images/home/logo.png' | theme }}" class="img-responsive" alt="logo">
+      </a>
+  </div>
+
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="logo">
-                            <a href="\" class="logo-brand">
-                                <img src="{{ 'assets/images/home/logo.png' | theme }}" class="img-responsive" alt="logo">
-                            </a>
-                        </div>
+
 
                         <nav id="easy-menu">
                             <div class="button">
@@ -28,8 +31,10 @@
                            </li>
 								                <li><a href= {% if this.page.id == 'homepage' %} "#event-list" {% else %} "\events" {% endif %} >События</a></li>
                                 <li><a href= {% if this.page.id == 'homepage' %} "#news" {% else %} "\news" {% endif %}>Новости</a></li>
+                                <li><a href= {% if this.page.id == 'homepage' %} "#gallery" {% else %} "\gallery" {% endif %}>Галерея</a></li>
                                 <li><a href="\contact">Контакты</a></li>
-                								<li><a href= {% if this.page.id == 'homepage' %} "#ggg" {% else %} "\" {% endif %}>Сведение ОНЛАЙН</a></li>
+                								<li><a href= {% if this.page.id == 'homepage' %} "#ggg" {% else %} "\svedenie-online" {% endif %}>Сведение ОНЛАЙН</a></li>
+                                <li><a href= {% if this.page.id == 'homepage' %} "#ggg" {% else %} "\sertifikat" {% endif %}>Заказать сертификат</a></li>
                 								<li><a href="http://music.x-records.ru">Муз. сеть</a></li>
                            </ul>
                        </nav>

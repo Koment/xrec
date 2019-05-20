@@ -26,6 +26,34 @@ class ContactForm extends ComponentBase
 
     }
 
+    public function defineProperties(){
+
+      return [
+
+        'subject' => [
+
+            'title' => 'Mail subject',
+            'description' => 'Define Mail subject',
+            'default' => 'Контакты',
+            'validationPattern' => '',
+            'validationMessage' => 'Никаких спецсимволов'
+
+        ],
+
+        'adress' => [
+
+          'title' => 'enter email',
+          'description' => 'Кому слать письма!',
+          'default' => 'x-records.ru@yandex.ru',
+          'validationPattern' => '',
+          'validationMessage' => 'Only numbers allowed!'
+
+        ],
+
+      ];
+
+    }
+
     public function onSend(){
 
 
@@ -61,13 +89,13 @@ class ContactForm extends ComponentBase
 
         } else {
 
-            $vars = ['name' => Input::get('name'), 'email' => Input::get('email'), 'content' => Input::get('content'), 'subject' => 'Contact form'];
+            $vars = ['name' => Input::get('name'), 'email' => Input::get('email'), 'content' => Input::get('content'), 'subject' => $this->property('subject')];
 
             Mail::send('kom.contact::mail.message', $vars, function($message){
 
-              $message -> to('koment47@yandex.ru', 'Angry Admin');
+              $message -> to($this->property('adress'), 'Angry Admin');
 
-              $message -> subject('new message from contact form');
+              $message -> subject('new message from ' . $this->property('subject'));
 
             });
 
@@ -82,5 +110,11 @@ class ContactForm extends ComponentBase
 
     }
 
+    public function onRun (){
+
+      $this->title = $this->property('subject');
+    }
+
+    public $title;
 
 }
