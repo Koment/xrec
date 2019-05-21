@@ -33,3 +33,6 @@
 1.0.12:
     - 'Created table kom_artists_tags_pivot'
     - builder_table_create_kom_artists_tags_pivot.php
+1.0.13:
+    - 'Updated table kom_artists_'
+    - builder_table_update_kom_artists__5.php

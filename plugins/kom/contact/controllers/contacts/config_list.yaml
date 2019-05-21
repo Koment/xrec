@@ -1,0 +1,12 @@
+list: $/kom/contact/models/contact/contact-list.yaml
+modelClass: Kom\Contact\Models\Contact
+title: Contacts
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+recordsPerPage: 20
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'
+recordUrl: 'kom/contact/contacts/update/:id'

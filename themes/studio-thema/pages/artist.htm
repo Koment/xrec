@@ -56,6 +56,7 @@ notFoundMessage = "Record not found"
 
                         <center><h3>Состав</h3></center>
                         <ul>
+
                             {% for musicman in record.consist %}
 
                               <li>{{ musicman.musicman_name }}<span class="pull-right">{{ musicman.musicman_inst }}</span></li>
@@ -64,8 +65,10 @@ notFoundMessage = "Record not found"
                         </ul>
 
                         <div class="album-detail-button" style="text-align: center;">
-                            <a href="#" class="musica-button-two">ВКонтач</a>
-                            <a href="#" class="musica-button-two">Cwitter</a>
+                            {% if record.vk %} <a href="{{ record.vk }}" class="musica-button-two" target="_blank">ВКонтач</a> {% endif %}
+                            {% if record.itunes %} <a href="{{ record.itunes }}" class="musica-button-two" target="_blank">iTunes</a> {% endif %}
+                            {% if record.yamuz %} <a href="{{ record.yamuz }}" class="musica-button-two" target="_blank">Яндекс музыка</a> {% endif %}
+                            {% if record.gmuz %} <a href="{{ record.gmuz }}" class="musica-button-two" target="_blank">Google музыка</a> {% endif %}
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,10 @@
+name: Contacts
+form: $/kom/contact/models/contact/contact-form.yaml
+modelClass: Kom\Contact\Models\Contact
+defaultRedirect: kom/contact/contacts
+create:
+    redirect: 'kom/contact/contacts/update/:id'
+    redirectClose: kom/contact/contacts
+update:
+    redirect: kom/contact/contacts
+    redirectClose: kom/contact/contacts

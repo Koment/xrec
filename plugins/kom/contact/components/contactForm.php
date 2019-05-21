@@ -10,6 +10,10 @@ use Validator;
 
 use Redirect;
 
+use Kom\Contact\Models\Contact;
+
+use Carbon\Carbon;
+
 
 class ContactForm extends ComponentBase
 {
@@ -50,9 +54,21 @@ class ContactForm extends ComponentBase
 
         ],
 
+        'uploads' => [
+
+          'title' => 'upload form',
+          'description' => 'добавить загрузку файлов в форму',
+          'default' => 0,
+          'validationPattern' => '^[0-1]$',
+          'validationMessage' => 'Only true or false'
+
+        ],
+
       ];
 
     }
+
+    // |^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$
 
     public function onSend(){
 
@@ -63,7 +79,8 @@ class ContactForm extends ComponentBase
 
           'name' => Input::get('name'),
           'email' => Input::get('email'),
-          'content' => Input::get('content')
+          'phone' => Input::get('phone'),
+          'content' => Input::get('content'),
 
         ],
 
@@ -71,6 +88,7 @@ class ContactForm extends ComponentBase
 
           'name' => 'required',
           'email' => 'required|email',
+          'phone' => 'required',
           'content' => 'required',
         ]
 
@@ -88,6 +106,22 @@ class ContactForm extends ComponentBase
                 ])];
 
         } else {
+
+
+            $message = new Contact();
+
+            $message->name = Input::get('name');
+
+            $message->email = Input::get('email');
+
+            $message->phone = Input::get('phone');
+
+            $message->description = Input::get('content');
+
+            $message->created_at = Carbon::now();
+
+            $message->save();
+
 
             $vars = ['name' => Input::get('name'), 'email' => Input::get('email'), 'content' => Input::get('content'), 'subject' => $this->property('subject')];
 
@@ -113,8 +147,11 @@ class ContactForm extends ComponentBase
     public function onRun (){
 
       $this->title = $this->property('subject');
+      $this->upload = $this->property('uploads');
+
     }
 
     public $title;
+    public $upload;
 
 }

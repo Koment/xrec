@@ -1,0 +1,4 @@
+title: Contacts
+modelClass: Kom\Contact\Models\Contact
+toolbar:
+    buttons: reorder_toolbar

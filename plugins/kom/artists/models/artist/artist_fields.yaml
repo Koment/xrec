@@ -38,7 +38,7 @@ fields:
         type: relation
     slug:
         label: Slug
-        span: right
+        span: auto
         preset:
             field: name
             type: slug
@@ -46,20 +46,35 @@ fields:
     consist:
         label: 'Состав:'
         prompt: 'Add new item'
-        span: auto
+        span: full
         type: repeater
         form:
             fields:
                 musicman_name:
                     label: Имя
-                    span: auto
+                    span: left
                     type: text
                 musicman_inst:
                     label: Позиция
-                    span: auto
+                    span: right
                     type: text
-
     tags:
-      label: 'Tags'
-      span: left
-      type: tagbox
+        label: Tags
+        span: auto
+        type: tagbox
+    vk:
+        label: Вконтакте
+        span: right
+        type: text
+    itunes:
+        label: iTunes
+        span: right
+        type: text
+    yamuz:
+        label: Яндекс-музыка
+        span: right
+        type: text
+    gmuz:
+        label: Google-музыка
+        span: right
+        type: text

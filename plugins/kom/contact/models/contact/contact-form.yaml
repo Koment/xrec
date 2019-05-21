@@ -1,0 +1,34 @@
+fields:
+    name:
+        label: Имя
+        span: left
+        type: text
+    description:
+        label: Описание
+        size: ''
+        span: right
+        type: richeditor
+    email:
+        label: Email
+        span: left
+        type: text
+    created_at:
+        label: Дата
+        mode: datetime
+        span: right
+        type: datepicker
+    phone:
+        label: Телефон
+        span: left
+        type: text
+    files:
+        label: 'Загруженные файлы'
+        mode: file
+        fileTypes: 'zip, rar'
+        mimeTypes: 'zip, rar'
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload

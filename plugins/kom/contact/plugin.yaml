@@ -4,3 +4,8 @@ plugin:
     author: Kom
     icon: oc-icon-envelope
     homepage: ''
+navigation:
+    main-menu-item:
+        label: Contacts
+        url: kom/contact/contacts
+        icon: icon-envelope

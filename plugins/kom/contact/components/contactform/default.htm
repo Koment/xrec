@@ -1,4 +1,5 @@
 {% set title = __SELF__.title %}
+{% set upload = __SELF__.upload %}
 <div class="comment-form">
     <h3 class="heading">{{ title }}</h3>
     <form id="contact" data-request="onSend">
@@ -9,10 +10,21 @@
             <div class="single-input">
                 <input type="email" name="email" placeholder="Эл. адрес" class="form-control" >
             </div>
+            <div class="single-input">
+                <input type="text" name="phone" placeholder="Номер телефона для связи" class="form-control" >
+            </div>
         </div>
         <div class="single-input">
             <textarea name="content" rows="8" cols="80" placeholder="Сообщение" ></textarea>
         </div>
+
+        {% if upload == '1' %}
+
+          <div class="single-input">
+              <input type="file" name="files">
+          </div>
+
+        {% endif %}
 
             <div id="result"></div>
 

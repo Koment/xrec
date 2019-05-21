@@ -473,11 +473,12 @@ textarea {
 .logo-brand{
   margin-top:10px;
   display: inline-block;
-  padding-left: 150px;
+
 }
 .logo{
     width: 150px;
     float: left;
+    padding-left: 150px;
 }
 
 
