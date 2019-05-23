@@ -24,9 +24,7 @@ fields:
     files:
         label: 'Загруженные файлы'
         mode: file
-        fileTypes: 'zip, rar'
-        mimeTypes: 'zip, rar'
-        useCaption: true
+        useCaption: 0
         thumbOptions:
             mode: crop
             extension: auto

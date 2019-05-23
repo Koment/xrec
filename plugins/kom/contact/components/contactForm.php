@@ -12,6 +12,8 @@ use Redirect;
 
 use Kom\Contact\Models\Contact;
 
+use System\Models\File;
+
 use Carbon\Carbon;
 
 
@@ -68,10 +70,13 @@ class ContactForm extends ComponentBase
 
     }
 
-    // |^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$
+    // ^((\+[7,8])+([0-9]){10})$/
+    //^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$
+    //^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$
 
     public function onSend(){
 
+      $upfile;
 
       $validator = Validator::make(
 
@@ -88,12 +93,16 @@ class ContactForm extends ComponentBase
 
           'name' => 'required',
           'email' => 'required|email',
-          'phone' => 'required',
+          'phone' => 'required|regex:/^(?:\+?[7,8,])+?([ (])+(\d{3})+?([ )])+(\d{3})?[ -]+(\d{2})?[ -]+(\d{2})$/',
           'content' => 'required',
+        ],
+
+        [
+          'phone.regex' => 'телефон в формате +7(8) (ххх) ххх-хх-хх',
+
         ]
 
       );
-
 
         if ($validator -> fails()){
 
@@ -123,15 +132,53 @@ class ContactForm extends ComponentBase
             $message->save();
 
 
-            $vars = ['name' => Input::get('name'), 'email' => Input::get('email'), 'content' => Input::get('content'), 'subject' => $this->property('subject')];
+            // if ($this->property('uploads') == 1 && Input::file('files')) {
+            //
+            //       $file = new File();
+            //       $file -> fromPost(Input::file('files'));
+            //
+            //       // dd($file);
+            //
+            //       if ($file->save()) {
+            //
+            //         dd($file);
+            //
+            //         // Attach the uploaded file to your model
+            //         $message->file()->add($file);
+            //         $message->save();
+            //
+            //         return ['#result' => $this->renderPartial('contactform::messages',[
+            //
+            //               // 'errMsgs' => $validator->messages()->all(),
+            //               'success' => $file,
+            //
+            //               ])];
+            //
+            //       } else {
+            //
+            //
+            //         return ['#result' => $this->renderPartial('contactform::messages',[
+            //
+            //               // 'errMsgs' => $validator->messages()->all(),
+            //               'success' => $file,
+            //
+            //               ])];
+            //
+            //       }
+            //
+            //
+            // }
 
-            Mail::send('kom.contact::mail.message', $vars, function($message){
 
-              $message -> to($this->property('adress'), 'Angry Admin');
-
-              $message -> subject('new message from ' . $this->property('subject'));
-
-            });
+            // $vars = ['name' => Input::get('name'), 'email' => Input::get('email'), 'content' => Input::get('content'), 'subject' => $this->property('subject')];
+            //
+            // Mail::send('kom.contact::mail.message', $vars, function($message){
+            //
+            //   $message -> to($this->property('adress'), 'Angry Admin');
+            //
+            //   $message -> subject('new message from ' . $this->property('subject'));
+            //
+            // });
 
             return ['#result' => $this->renderPartial('contactform::messages',[
 
