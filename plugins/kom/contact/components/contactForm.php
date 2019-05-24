@@ -16,6 +16,8 @@ use System\Models\File;
 
 use Carbon\Carbon;
 
+use Flash;
+
 
 class ContactForm extends ComponentBase
 {
@@ -70,9 +72,6 @@ class ContactForm extends ComponentBase
 
     }
 
-    // ^((\+[7,8])+([0-9]){10})$/
-    //^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$
-    //^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$
 
     public function onSend(){
 
@@ -129,45 +128,52 @@ class ContactForm extends ComponentBase
 
             $message->created_at = Carbon::now();
 
-            $message->save();
+            // $message->save();
+
+            if ($this->property('uploads') == 1 && Input::file('files')) {
+
+                  $file = new File();
+                  $file -> fromPost(Input::file('files'));
+
+                  // dd($file);
+
+                  if ($file->save()) {
+
+                    $message->save();
+
+                    // Attach the uploaded file to your model
+                    $message->files()->add($file);
+                    $message->save();
+
+                    Flash::success('file saved!');
+
+                    return Redirect::back();
 
 
-            // if ($this->property('uploads') == 1 && Input::file('files')) {
-            //
-            //       $file = new File();
-            //       $file -> fromPost(Input::file('files'));
-            //
-            //       // dd($file);
-            //
-            //       if ($file->save()) {
-            //
-            //         dd($file);
-            //
-            //         // Attach the uploaded file to your model
-            //         $message->file()->add($file);
-            //         $message->save();
-            //
-            //         return ['#result' => $this->renderPartial('contactform::messages',[
-            //
-            //               // 'errMsgs' => $validator->messages()->all(),
-            //               'success' => $file,
-            //
-            //               ])];
-            //
-            //       } else {
-            //
-            //
-            //         return ['#result' => $this->renderPartial('contactform::messages',[
-            //
-            //               // 'errMsgs' => $validator->messages()->all(),
-            //               'success' => $file,
-            //
-            //               ])];
-            //
-            //       }
-            //
-            //
-            // }
+
+                    // return ['#result' => $this->renderPartial('contactform::messages',[
+                    //
+                    //       // 'errMsgs' => $validator->messages()->all(),
+                    //       'success' => '$file->path',
+                    //
+                    //       ])];
+
+                  } else {
+
+                    Flash::success('file NOT saved!');
+
+                    //     dd($file);
+                    // return ['#result' => $this->renderPartial('contactform::messages',[
+                    //
+                    //       // 'errMsgs' => $validator->messages()->all(),
+                    //       'success' => $file->path,
+                    //
+                    //       ])];
+
+                  }
+
+
+            }
 
 
             // $vars = ['name' => Input::get('name'), 'email' => Input::get('email'), 'content' => Input::get('content'), 'subject' => $this->property('subject')];
@@ -180,12 +186,12 @@ class ContactForm extends ComponentBase
             //
             // });
 
-            return ['#result' => $this->renderPartial('contactform::messages',[
-
-                  'errMsgs' => $validator->messages()->all(),
-                  'success' => 'your messaga is send!',
-
-              ])];
+            // return ['#result' => $this->renderPartial('contactform::messages',[
+            //
+            //       'errMsgs' => $validator->messages()->all(),
+            //       'success' => 'your messaga is send!',
+            //
+            //   ])];
 
         }
 

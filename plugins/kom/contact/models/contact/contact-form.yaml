@@ -29,4 +29,6 @@ fields:
             mode: crop
             extension: auto
         span: auto
+        imageWidth: '100'
+        imageHeight: '100'
         type: fileupload
