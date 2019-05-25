@@ -133,10 +133,22 @@ class ContactForm extends ComponentBase
 
             if ($this->property('uploads') == 1 && Input::file('files')) {
 
-                  $file = new File();
-                  $file -> fromPost(Input::file('files'));
+              // Flash::error(Input::file('files')->getMimeType());
+              //
+              // return Redirect::back();
 
-                  // dd($file);
+
+              if ((Input::file('files')->getMimeType() != 'application/zip') || (Input::file('files')->getMimeType() != 'application/x-rar')){
+
+                Flash::error('Только zip или rar архив!');
+
+                return Redirect::back();
+
+              }
+
+                  $file = new File();
+
+                  $file -> fromPost(Input::file('files'));
 
                   if ($file->save()) {
 
@@ -146,33 +158,22 @@ class ContactForm extends ComponentBase
                     $message->files()->add($file);
                     $message->save();
 
-                    Flash::success('file saved!');
+                    Flash::success('Файлы отправлены!');
 
                     return Redirect::back();
-
-
-
-                    // return ['#result' => $this->renderPartial('contactform::messages',[
-                    //
-                    //       // 'errMsgs' => $validator->messages()->all(),
-                    //       'success' => '$file->path',
-                    //
-                    //       ])];
 
                   } else {
 
                     Flash::success('file NOT saved!');
 
-                    //     dd($file);
-                    // return ['#result' => $this->renderPartial('contactform::messages',[
-                    //
-                    //       // 'errMsgs' => $validator->messages()->all(),
-                    //       'success' => $file->path,
-                    //
-                    //       ])];
-
                   }
 
+
+            } else {
+
+              $message->save();
+
+              Flash::success('Мы обязательно прочитаем!');
 
             }
 
@@ -186,13 +187,6 @@ class ContactForm extends ComponentBase
             //   $message -> subject('new message from ' . $this->property('subject'));
             //
             // });
-
-            // return ['#result' => $this->renderPartial('contactform::messages',[
-            //
-            //       'errMsgs' => $validator->messages()->all(),
-            //       'success' => 'your messaga is send!',
-            //
-            //   ])];
 
         }
 
