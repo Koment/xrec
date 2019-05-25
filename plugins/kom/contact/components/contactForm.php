@@ -131,20 +131,19 @@ class ContactForm extends ComponentBase
 
             // $message->save();
 
-            if ($this->property('uploads') == 1 && Input::file('files')) {
+            if ( $this->property('uploads') == 1 && Input::file('files')->getSize() > 0 ) {
 
-              // Flash::error(Input::file('files')->getMimeType());
+              // Flash::error('input file size = ' . Input::file('files')->getSize());
               //
-              // return Redirect::back();
+              // return ['#result' => $this->renderPartial('contactform::messages',[
+              //
+              //         'error' => 'input file size = ' . Input::file('files')->getSize(),
+              //
+              //       ])];
 
+              $accepted = ['application/zip', 'application/x-rar'];
 
-              if ((Input::file('files')->getMimeType() != 'application/zip') || (Input::file('files')->getMimeType() != 'application/x-rar')){
-
-                Flash::error('Только zip или rar архив!');
-
-                return Redirect::back();
-
-              }
+              if (in_array(Input::file('files')->getMimeType(), $accepted) ) {
 
                   $file = new File();
 
@@ -156,6 +155,7 @@ class ContactForm extends ComponentBase
 
                     // Attach the uploaded file to your model
                     $message->files()->add($file);
+
                     $message->save();
 
                     Flash::success('Файлы отправлены!');
@@ -164,16 +164,37 @@ class ContactForm extends ComponentBase
 
                   } else {
 
-                    Flash::success('file NOT saved!');
+                    return ['#result' => $this->renderPartial('contactform::messages',[
 
+                            'error' => 'Файлы не отправлены, попробуйте ещё раз.'
+
+                          ])];
                   }
 
+                } else {
+
+                  return ['#result' => $this->renderPartial('contactform::messages',[
+
+                          'error' => 'Только zip или rar архив не более ' . ini_get('upload_max_filesize') . 'b',
+
+                        ])];
+                }
+
+            } elseif ($this->property('uploads') == 0) {
+
+              $message -> save();
+
+              Flash::success('Мы обязательно прочтем!');
+
+              return Redirect::back();
 
             } else {
 
-              $message->save();
+              return ['#result' => $this->renderPartial('contactform::messages',[
 
-              Flash::success('Мы обязательно прочитаем!');
+                      'error' => 'Файлы не выбраны... или размер архива превышает ' . ini_get('upload_max_filesize') . 'b.'
+
+                    ])];
 
             }
 

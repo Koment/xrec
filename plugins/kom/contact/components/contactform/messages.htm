@@ -10,31 +10,49 @@
 
 {% endfor %}
 
+{% for message in error %}
 
-<!-- <script type="text/javascript">
+  {{ message }} <br>
 
-  $('.errMsg').remove();
+{% endfor %}
+
+
+<script type="text/javascript">
+
+  $('.alert-warning').remove();
 
   var msg = {{ fieldMsgs|json_encode()|raw }};
 
-  console.log('msg = ' + msg);
+  // console.log('msg = ' + msg);
 
   $.each(msg, function(i, obj){
 
-    $('<div class="errMsg">' + obj + '</div>').insertBefore($('*[name=' + i + ']'));
+    $('<div class="alert-warning">' + obj + '</div>').insertBefore($('*[name=' + i + ']'));
 
   });
 
-  $('.success').remove();
+  $('.alert-success').remove();
 
   var msgS = {{ success|json_encode()|raw }};
 
-  console.log('msgS = ' + msgS);
+  // console.log('msgS = ' + msgS);
 
   if (msgS) {
 
-    $('<div class="success">' + msgS + '</div>').insertBefore($('#result'));
+    $('<div class="alert-success">' + msgS + '</div>').insertBefore($('#result'));
 
   }
 
-</script> -->
+  $('.alert-warning').remove();
+
+  var msgS = {{ error|json_encode()|raw }};
+
+  // console.log('msgS = ' + msgS);
+
+  if (msgS) {
+
+    $('<div class="alert-warning">' + msgS + '</div>').insertBefore($('#result'));
+
+  }
+
+</script>
