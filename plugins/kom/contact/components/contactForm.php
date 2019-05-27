@@ -195,22 +195,18 @@ class ContactForm extends ComponentBase
                       'error' => 'Файлы не выбраны... или размер архива превышает ' . ini_get('upload_max_filesize') . 'b.'
 
                     ])];
-
             }
 
+            $vars = ['name' => Input::get('name'), 'email' => Input::get('email'), 'content' => Input::get('content'), 'subject' => $this->property('subject')];
 
-            // $vars = ['name' => Input::get('name'), 'email' => Input::get('email'), 'content' => Input::get('content'), 'subject' => $this->property('subject')];
-            //
-            // Mail::send('kom.contact::mail.message', $vars, function($message){
-            //
-            //   $message -> to($this->property('adress'), 'Angry Admin');
-            //
-            //   $message -> subject('new message from ' . $this->property('subject'));
-            //
-            // });
+            Mail::send('kom.contact::mail.message', $vars, function($message){
 
+              $message -> to($this->property('adress'), 'Angry Admin');
+
+              $message -> subject('new message from ' . $this->property('subject'));
+
+            });
         }
-
     }
 
     public function onRun (){

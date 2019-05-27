@@ -18,4 +18,15 @@ class Plugin extends PluginBase
     public function registerSettings()
     {
     }
+
+    public function registerReportWidgets() {
+
+      return [
+
+        'Kom\Contacts\ReportWidgets\RecentContacts' => [
+          'label' => 'Последние Контакты',
+          'context' => 'dashboard'
+        ]
+      ];
+    }
 }
