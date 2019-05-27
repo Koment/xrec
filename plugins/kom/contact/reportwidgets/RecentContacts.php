@@ -1,6 +1,6 @@
-<?php namespace Kom\Contact;
+<?php namespace Kom\Contact\ReportWidgets;
 
-use Backend\Classes\ReporWidgetBase;
+use Backend\Classes\ReportWidgetBase;
 
 class RecentContacts extends ReportWidgetBase {
 
@@ -9,5 +9,7 @@ class RecentContacts extends ReportWidgetBase {
     return $this->makePartial('widget');
   }
 
-  
+  // $recCon = new RecentContacts($this);
+  // $recCon->alias = 'recentcontacts';
+  // $recCon->bindToController();
 }

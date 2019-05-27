@@ -23,7 +23,7 @@ class Plugin extends PluginBase
 
       return [
 
-        'Kom\Contacts\ReportWidgets\RecentContacts' => [
+        'Kom\Contact\ReportWidgets\RecentContacts' => [
           'label' => 'Последние Контакты',
           'context' => 'dashboard'
         ]

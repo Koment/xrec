@@ -17,8 +17,6 @@ class Contacts extends Controller
         parent::__construct();
         BackendMenu::setContext('Kom.Contact', 'main-menu-item');
 
-        $recCon = new RecentContacts($this);
-        $recCon->alias = 'recentcontacts';
-        $recCon->bindToController();
+        
     }
 }
