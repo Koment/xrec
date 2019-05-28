@@ -129,9 +129,11 @@ class ContactForm extends ComponentBase
 
             $message->created_at = Carbon::now();
 
+            $message->form_title = $this->property('subject');
+
             // $message->save();
 
-            if ( $this->property('uploads') == 1 && Input::file('files')->getSize() > 0 ) {
+            if ( $this->property('uploads') == 1 && Input::file('files') ) {
 
               // Flash::error('input file size = ' . Input::file('files')->getSize());
               //

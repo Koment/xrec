@@ -363,6 +363,15 @@ textarea {
 .pdb110{
   padding-bottom: 110px;
 }
+
+.marbot30{
+  margin-bottom: 30px;
+}
+
+.marbot60{
+  margin-bottom: 60px;
+}
+
 /* -----------------------------------
 ** Main Menu
 -------------------------------------*/
@@ -1379,7 +1388,7 @@ textarea {
   margin-right: 0;
 }
 .album-detail-audio-player{
-  margin-bottom: 107px;
+  margin-bottom: 20px;
 }
 .album-detail-audio-player .audio-playlist-wrapper{
   position: static;
@@ -1888,6 +1897,11 @@ textarea {
 /* -----------------------------------
 ** Blog
 -------------------------------------*/
+.img-responsive{
+  width: 100%;
+}
+
+
 .blog-post {
   position: relative;
   text-align: center;
@@ -1986,6 +2000,10 @@ textarea {
 }
 
 .blog-detail-text .social-icon {
+  padding-top: 28px;
+}
+
+.social-icon {
   padding-top: 28px;
 }
 

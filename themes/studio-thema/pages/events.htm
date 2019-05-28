@@ -41,7 +41,7 @@ function onStart(){
 
       <!-- background:linear-gradient(-45deg, #615e9c 20%, #cc464a 150%) -->
 
-        <div class="upcoming-event" style="background: linear-gradient: (rgba(255, 0, 0, 0.3), rgba(255, 0, 0, 0.3)), url('{{ record.eventimg.path }}'); background-position: center; background-repeat: no-repeat; background-size: cover;">
+        <div class="upcoming-event" >
 
             <div class="fornt-part">
                 <div class="date">{{ record.event_date[0] }} / {{ record.event_date[1] }}</div>
@@ -53,11 +53,14 @@ function onStart(){
 
                 </div>
             </div>
-            <div class="back-part">
+            <!-- url('{{ record.eventimg.path }}') -->
+            <div class="back-part" style="background: url('{{ record.eventimg.path }}'); background-position: center; background-repeat: no-repeat; background-size: cover;">
+              <div style="background: rgba(30, 30, 30, 0.9); height: 100%;">
                 <div class="event-counter">
                     <div>{{ record.event_date[0] }} {{ record.event_date[1] }} | {{ record.title }} | {{ record.location }}</div>
                     <div class='countdown' data-date="{{ record.event_date[0] }}" data-time="{{ record.event_date[1] }}"></div>
                 </div>
+              </div>
             </div>
 
 

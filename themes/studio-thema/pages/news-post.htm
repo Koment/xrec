@@ -11,40 +11,59 @@ categoryPage = "news"
 
 {% partial 'sections/banner.htm' %}
 
-<div class="main-content pdt40 pdb90">
+<div class="main-content pdt40 pdb110">
     <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="blog-detail">
+                    <div class="image">
+                        <img src="{{ post.featured_images[0].path }}" alt="{{ image.description }}" class="img-responsive">
+                    </div>
+                    <div class="blog-detail-text">
+                        <div class="meta-info">
+                            <span>{{ post.published_at|date('d / m, Y') }}</span><span>{{ post.author }}</span>
+                        </div>
+                        <div>
+                            <h3 class="blog-heading">{{ post.title }}</h3>
+                            {{ post.content_html|raw }}
+                        </div>
 
-      <h1>{{ post.title }}</h1>
+                        {% if post.featured_images.count > 1 %}
 
-      <div class="content">{{ post.content_html|raw }}</div>
+                          {% for image in post.featured_images %}
 
-          <div class="gallery-grid">
+                            <div class="grid-item painting poster recreation">
+                                <img src="{{ image.path }}" class="img-responsive" alt="{{ image.description }}">
+                                <div class="base-gradient-bg overlay"></div>
+                                <a href="{{ image.path }}" class="zoom-button"><i class="ion-ios-plus-empty"></i></a>
+                            </div>
 
-            {% if post.featured_images.count %}
+                          {% endfor %}
 
-              {% for image in post.featured_images %}
+                        {% endif %}
 
-                <div class="grid-item painting poster recreation">
-                    <img src="{{ image.path }}" class="img-responsive" alt="{{ image.description }}">
-                    <div class="base-gradient-bg overlay"></div>
-                    <a href="{{ image.path }}" class="zoom-button"><i class="ion-ios-plus-empty"></i></a>
+                        <div class="row marbot30">
+                            <div class="col-sm-6">
+                                <ul class="blog-tags">
+                                    <li><a href="#" class="musica-button-two">музыка</a></li>
+                                    <li><a href="#" class="musica-button-two">блог</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="social-icon text-right">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-
-              {% endfor %}
-
-            {% endif %}
-
-          </div>
-
-      <p class="info">
-          zaposheno
-          {% if post.categories.count %} in
-              {% for category in post.categories %}
-                  <a href="{{ category.url }}">{{ category.name }}</a>{% if not loop.last %}, {% endif %}
-              {% endfor %}
-          {% endif %}
-          | {{ post.published_at|date('d / m, Y') }}
-      </p>
-
+            </div>
+        </div>
     </div>
 </div>

@@ -17,21 +17,54 @@ notFoundMessage = "Record not found"
 
 {% partial 'sections/banner.htm' %}
 
-<div class="container">
+<div class="main-content pdt40 pdb110">
+    <div class="container">
 
-    {% if record %}
-    
-        <h1>{{ record.title }}</h1>
+      {% if record %}
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="blog-detail">
+                    <div class="image">
 
-        <h3>{{ record.location }}</h3>
+                      {% if record.eventimg.path %}
+                        <img src="{{ record.eventimg.path }}" alt="{{ image.description }}" class="img-responsive">
+                      {% else %}
+                        <img src="#noimage" alt="{{ record.title }}" class="img-responsive">
+                      {% endif %}
 
-        <p>{{ record.description|raw }}</p>
+                    </div>
+                    <div class="blog-detail-text">
+                        <div>
+                            <h3 class="blog-heading" style="margin-top: 30px;">{{ record.title }}</h3>
+                            <h5><span>{{ record.event_date|date('d / m, Y') }}</span></h5>
+                            {{ record.description|raw }}
+                        </div>
 
-        <h5>Дата:</h5>
-        <h2>{{ record.event_date }}</h2>
+                        <div class="row marbot30">
+                            <div class="col-sm-6">
+                                <ul class="blog-tags">
+                                    <li><a href="#" class="musica-button-two">музыка</a></li>
+                                    <li><a href="#" class="musica-button-two">блог</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="social-icon text-right">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-    {% else %}
-        {{ notFoundMessage }}
-    {% endif %}
-
+                </div>
+            </div>
+        </div>
+        {% else %}
+            {{ notFoundMessage }}
+        {% endif %}
+    </div>
 </div>

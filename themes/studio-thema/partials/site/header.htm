@@ -2,7 +2,7 @@
 
   <div class="logo">
       <a href="\" class="logo-brand">
-          <img src="{{ 'assets/images/home/logo.png' | theme }}" class="img-responsive" alt="logo">
+          <img src="{{ 'assets/images/home/logo.png' | theme }}" alt="logo">
       </a>
   </div>
 
@@ -17,18 +17,7 @@
                             </div>
                             <ul class="menu-list">
                                 <li><a href="\">Главная</a></li>
-                                <li><a href= {% if this.page.id == 'homepage' %} "#artists" {% else %} "\artists" {% endif %} >Исполнители</a>
-								<!--	<ul class="menu-inner">
-										<li><a href="#">NnN</a></li>
-										<li><a href="artists/a-crime/index.html">А. Крайм</a></li>
-										<li><a href="artists/delfina/index.html">Дельфина</a></li>
-										<li><a href="artists/nikita-kit/index.html">Никита КИТ</a></li>
-										<li><a href="artists/ali/index.html">Али</a></li>
-										<li><a href="artists/oc/index.html">ОС3/1</a></li>
-										<li><a href="artists/none-sense/index.html">NONE Sense</a></li>
-										<li><a href="artists/dve-barcuhi/index.html">Двэ Барцухи</a></li>
-									</ul> -->
-                           </li>
+                                <li><a href= {% if this.page.id == 'homepage' %} "#artists" {% else %} "\artists" {% endif %} >Исполнители</a></li>
 								                <li><a href= {% if this.page.id == 'homepage' %} "#event-list" {% else %} "\events" {% endif %} >События</a></li>
                                 <li><a href= {% if this.page.id == 'homepage' %} "#news" {% else %} "\news" {% endif %}>Новости</a></li>
                                 <li><a href= {% if this.page.id == 'homepage' %} "#gallery" {% else %} "\gallery" {% endif %}>Галерея</a></li>
@@ -62,19 +51,7 @@
                 <span class="mobile-menu-close"><i class="fa fa-times"></i></span>
                 <ul class="menu-accordion">
                     <li><a href="index.html">Главная</a></li>
-					<li><a href="artists.html">Исполнители</a>
-            <!--    <li><a href="javascript:void(0);" class="has-submenu">Исполнители<i class="fa fa-angle-down pull-right"></i></a>
-                        <ul class="menu-inner">
-								<li><a href="#">NnN</a></li>
-								<li><a href="artists/a-crime/index.html">А. Крайм</a></li>
-								<li><a href="artists/delfina/index.html">Дельфина</a></li>
-								<li><a href="artists/nikita-kit/index.html">Никита КИТ</a></li>
-								<li><a href="artists/ali/index.html">Али</a></li>
-								<li><a href="artists/oc/index.html">ОС3/1</a></li>
-								<li><a href="artists/none-sense/index.html">NONE Sense</a></li>
-								<li><a href="artists/dve-barcuhi/index.html">Двэ Барцухи</a></li>
-                        </ul> -->
-                    </li>
+					<li><a href="artists.html">Исполнители</a></li>
                     <li><a href="news.html">Новости</a></li>
                     <li><a href="contact.php">Контакты</a></li>
 					<li><a href="mastering.html">Сведение ОНЛАЙН</a></li>

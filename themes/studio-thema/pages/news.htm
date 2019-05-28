@@ -18,7 +18,7 @@ postPage = "news-post"
 
 {% set posts = blogPosts.posts %}
 
-<div class="row row-eq-height">
+<div class="row row-eq-height marbot60">
 
 {% for post in posts %}
 
@@ -28,7 +28,7 @@ postPage = "news-post"
 
     <a href="{{ post.url }}">
       <div style="height: 50%; ">
-        <div class="post-date base-gradient-bg">
+        <div class="post-date base-gradient-bg ">
             {{ post.published_at|date('M d, Y') }}
         </div>
       </div>

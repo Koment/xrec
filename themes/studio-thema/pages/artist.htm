@@ -70,26 +70,13 @@ notFoundMessage = "Record not found"
                             {% if record.yamuz %} <a href="{{ record.yamuz }}" class="musica-button-two" target="_blank">Яндекс музыка</a> {% endif %}
                             {% if record.gmuz %} <a href="{{ record.gmuz }}" class="musica-button-two" target="_blank">Google музыка</a> {% endif %}
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
 
-      <div class="tags">
 
-        <h4>Тэги</h4>
-
-        <ul>
-
-          {% for tag in record.tags %}
-
-            <li><a href="/tags/{{ tag.slug }}">{{ tag.tag }}</a></li>
-
-          {% endfor %}
-
-        </ul>
-
-      </div>
 
         <div class="album-detail-audio-player">
             <div class="musica-audio-player">
@@ -153,6 +140,30 @@ notFoundMessage = "Record not found"
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row marbot30">
+            <div class="col-sm-6">
+                <ul class="blog-tags">
+
+                  {% for tag in record.tags %}
+
+                    <li><a href="/tags/{{ tag.slug }}" class="musica-button-two">{{ tag.tag }}</a></li>
+
+                  {% endfor %}
+
+                </ul>
+            </div>
+            <div class="col-sm-6">
+                <div class="social-icon text-right">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    </ul>
                 </div>
             </div>
         </div>

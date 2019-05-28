@@ -46,13 +46,16 @@ function onStart(){
                 </div>
             </div>
             <div class="back-part">
-                <div class="event-counter">
-                  {% for img in record.gal_photo|slice(0,8) %}
 
-                    <div style="height: 132px; width: 132px; float: left; background: url('{{ img.path }}'); background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
+              {% for img in record.gal_photo|slice(0,8) %}
 
-                  {% endfor %}
-                </div>
+                <div style="height: 132px; width: 132px; float: left; background: url('{{ img.path }}'); background-position: center; background-repeat: no-repeat; background-size: cover; opacity: 0.2"></div>
+
+              {% endfor %}
+
+              <div class="event-counter">
+              </div>
+
             </div>
 
 

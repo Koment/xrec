@@ -1,4 +1,8 @@
 fields:
+    form_title:
+        label: Форма
+        span: left
+        type: text
     name:
         label: Имя
         span: left
