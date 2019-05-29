@@ -6,9 +6,6 @@ use Config;
 
 use Kom\Artists\Models\Tag;
 
-
-
-
 class TagBox extends FormWidgetBase
 
 {
@@ -23,8 +20,6 @@ class TagBox extends FormWidgetBase
         ];
 
     }
-
-
 
     public function render(){
 
@@ -51,7 +46,6 @@ class TagBox extends FormWidgetBase
         $this->vars['selectedValues'] = [];
 
       }
-
 
     }
 

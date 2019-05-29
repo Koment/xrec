@@ -1,0 +1,5 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table kom_tags_'
+    - builder_table_create_kom_tags_.php

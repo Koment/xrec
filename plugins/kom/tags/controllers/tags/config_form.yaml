@@ -1,0 +1,10 @@
+name: Tags
+form: $/kom/tags/models/tag/fields.yaml
+modelClass: Kom\Tags\Models\Tag
+defaultRedirect: kom/tags/tags
+create:
+    redirect: 'kom/tags/tags/update/:id'
+    redirectClose: kom/tags/tags
+update:
+    redirect: kom/tags/tags
+    redirectClose: kom/tags/tags

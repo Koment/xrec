@@ -232,10 +232,6 @@ trait ViewMaker
             $extraParams = [];
         }
 
-        if (!is_array($this->vars)) {
-            $this->vars = [];
-        }
-
         $vars = array_merge($this->vars, $extraParams);
 
         $obLevel = ob_get_level();

@@ -1,0 +1,11 @@
+plugin:
+    name: 'kom.tags::lang.plugin.name'
+    description: 'kom.tags::lang.plugin.description'
+    author: Kom
+    icon: oc-icon-tags
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: Tags
+        url: kom/tags/tags
+        icon: icon-tags

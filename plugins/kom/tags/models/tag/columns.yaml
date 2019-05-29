@@ -1,0 +1,6 @@
+columns:
+    tag:
+        label: Tag
+        type: text
+        searchable: true
+        sortable: true

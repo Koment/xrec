@@ -39,6 +39,13 @@ class Tag extends Model
 
       ],
 
+      'events' => [
+        'Kom\Events\Models\Event',
+        'table' => 'kom_artists_tags_pivot',
+        'order' => 'name'
+
+      ],
+
     ];
 
 

@@ -1,0 +1,4 @@
+title: Tags
+modelClass: Kom\Tags\Models\Tag
+toolbar:
+    buttons: reorder_toolbar
