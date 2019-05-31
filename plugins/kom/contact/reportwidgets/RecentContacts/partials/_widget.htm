@@ -15,7 +15,13 @@
                       <span class="status-icon warning"><i class="icon-exclamation"></i></span>
                       <span class="status-text warning">
 
-                        <?= $mess -> form_title; ?> | <?= $mess->email; ?> | <?= $mess->phone; ?> | <?= $mess->created_at; ?>
+                        <?php
+
+                          $letter_date = explode('-', explode(' ', $mess->created_at)[0]);
+
+                        ?>
+
+                        <?= $mess -> form_title; ?> | <?= $mess->email; ?> | <?= $mess->phone; ?> | <span style="font-size: 16px; color: green;"><?= $letter_date[2] . '/' . $letter_date[1] . ', ' . $letter_date[0]; ?></span>
 
                       </span>
                           <a href="<?= Backend::url('kom/contact/contacts/update/' . $mess->id) ?>" class="status-label link"><?= $mess -> name; ?></a>

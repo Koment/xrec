@@ -14,21 +14,6 @@ notFoundMessage = "Record not found"
 {% set displayColumn = builderDetails.displayColumn %}
 {% set notFoundMessage = builderDetails.notFoundMessage %}
 
-<!-- {% if record %}
-
-    <h2>{{ attribute(record, displayColumn) }}</h2>
-
-    {% for artist in record.artists %}
-
-      <a href="/artist/{{ artist.slug }}">{{ artist.name }}</a>
-
-    {% endfor %}
-
-
-{% else %}
-    {{ notFoundMessage }}
-{% endif %} -->
-
 
 {% partial 'sections/banner.htm' %}
 
@@ -66,9 +51,9 @@ notFoundMessage = "Record not found"
 
               {% endspaceless %}
 
-              {% else %}
-                  <li class="no-data">{{ noRecordsMessage }}</li>
-              {% endfor %}
+                {% else %}
+                    <li class="no-data">{{ noRecordsMessage }}</li>
+                {% endfor %}
 
             {% endif %}
 

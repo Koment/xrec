@@ -8,12 +8,17 @@ use Model;
 class Tag extends Model
 {
     use \October\Rain\Database\Traits\Validation;
-    
+
     /*
      * Disable timestamps by default.
      * Remove this line if timestamps are defined in the database table.
      */
     public $timestamps = false;
+
+
+    protected $fillable = [
+        'name'
+    ];
 
 
     /**
@@ -25,5 +30,10 @@ class Tag extends Model
      * @var array Validation rules
      */
     public $rules = [
+    ];
+
+    public $morphedByMany = [
+
+      'events' => ['Kom\Events\Models\Event', 'name' => 'taggables'],
     ];
 }

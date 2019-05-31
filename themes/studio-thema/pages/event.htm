@@ -43,8 +43,13 @@ notFoundMessage = "Record not found"
                         <div class="row marbot30">
                             <div class="col-sm-6">
                                 <ul class="blog-tags">
-                                    <li><a href="#" class="musica-button-two">музыка</a></li>
-                                    <li><a href="#" class="musica-button-two">блог</a></li>
+
+                                  {% for tag in record.tags %}
+
+                                    <li><a href="#" class="musica-button-two">{{ tag.name }}</a></li>
+
+                                  {% endfor %}
+
                                 </ul>
                             </div>
                             <div class="col-sm-6">

@@ -3,3 +3,12 @@
 1.0.2:
     - 'Created table kom_tags_'
     - builder_table_create_kom_tags_.php
+1.0.3:
+    - 'Created table kom_tags_guid'
+    - builder_table_create_kom_tags_guid.php
+1.0.4:
+    - 'Updated table kom_tags_guid'
+    - builder_table_update_kom_tags_guid.php
+1.0.5:
+    - 'Updated table kom_tags_guid'
+    - builder_table_update_kom_tags_taggables.php

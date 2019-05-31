@@ -34,13 +34,7 @@ class Event extends Model
       'eventimg' => 'System\Models\File',
     ];
 
-    public $belongsToMany = [
-
-      'tags' => [
-        'Kom\Artists\Models\Tag',
-        'table' => 'kom_artists_tags_pivot',
-        'order' => 'tag'
-      ],
-
-    ];
+    // public $morphToMany = [
+    //   'tags' => ['Kom\Tags\Models\tag', 'name' => 'taggable']
+    // ];
 }

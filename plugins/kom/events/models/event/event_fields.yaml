@@ -35,3 +35,11 @@ fields:
         imageWidth: '150'
         imageHeight: '150'
         type: fileupload
+    # tags:
+    #     label: 'Tag list'
+    #     span: auto
+    #     mode: relation
+    #     separator: comma
+    #     customTags: true
+    #     useKey: false
+    #     type: taglist

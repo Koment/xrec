@@ -27,11 +27,14 @@ class Contact extends Model
     public $rules = [
     ];
 
-
+    /**
+    * Relations
+    */
 
     public $attachMany = [
 
       'files' => 'System\Models\File',
 
     ];
+
 }
