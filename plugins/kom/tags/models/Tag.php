@@ -16,9 +16,9 @@ class Tag extends Model
     public $timestamps = false;
 
 
-    protected $fillable = [
-        'name'
-    ];
+    // protected $fillable = [
+    //     'name'
+    // ];
 
 
     /**
@@ -34,6 +34,13 @@ class Tag extends Model
 
     public $morphedByMany = [
 
-      'events' => ['Kom\Events\Models\Event', 'name' => 'taggables'],
+      'events' => ['Kom\Events\Models\Event', 'name' => 'taggable', 'model' => 'events'],
+      'artists' => ['Kom\Artists\Models\Artist', 'name' => 'taggable', 'model' => 'artists'],
+      'news' => ['Rainlab\Blog\Models\Post', 'name' => 'taggable', 'model' => 'news']
     ];
+
+    public function getRelationModel(){
+
+      return 'getRelationModel()';
+    }
 }

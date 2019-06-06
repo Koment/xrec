@@ -38,11 +38,11 @@ class Artist extends Model
         'order' => 'genre_name'
       ],
 
-      'tags' => [
-        'Kom\Artists\Models\Tag',
-        'table' => 'kom_artists_tags_pivot',
-        'order' => 'tag'
-      ],
+      // 'tags' => [
+      //   'Kom\Artists\Models\Tag',
+      //   'table' => 'kom_artists_tags_pivot',
+      //   'order' => 'tag'
+      // ],
 
     ];
 

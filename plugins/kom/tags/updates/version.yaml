@@ -12,3 +12,6 @@
 1.0.5:
     - 'Updated table kom_tags_guid'
     - builder_table_update_kom_tags_taggables.php
+1.0.6:
+    - 'Updated table kom_tags_'
+    - builder_table_update_kom_tags_.php

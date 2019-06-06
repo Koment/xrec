@@ -3,16 +3,40 @@ url = "/tags/:slug"
 layout = "studio-dark"
 is_hidden = 0
 
-[builderDetails]
-modelClass = "Kom\Artists\Models\Tag"
-identifierValue = "{{ :slug }}"
-modelKeyColumn = "slug"
-displayColumn = "tag"
-notFoundMessage = "Record not found"
 ==
-{% set record = builderDetails.record %}
-{% set displayColumn = builderDetails.displayColumn %}
-{% set notFoundMessage = builderDetails.notFoundMessage %}
+
+
+use Kom\Tags\Models\Tag;
+
+function onStart () {
+
+    $this['tag'] = Tag::where('slug', $this->param('slug'))->first();
+
+    /*dd($this['tag']);*/
+
+    $this['rel'] = [];
+
+
+
+    foreach ($this['tag']->morphedByMany as $this['model']) {
+
+      /*dd($this['rel'][$this['model']['model']]);*/
+
+      array_push($this['rel'][$this['model']['model']] = $this['tag']->{$this['model']['model']});
+
+    }
+
+    dd($this['rel']);
+
+}
+
+
+
+
+==
+
+
+
 
 
 {% partial 'sections/banner.htm' %}
@@ -20,6 +44,15 @@ notFoundMessage = "Record not found"
 <div class="main-content pdt40 pdb90">
     <div class="container">
         <div class="row row-eq-height">
+
+          {% for model in tag.morphedByMany %}
+
+          {{ model['model'] }}
+
+          {{ tag.model['model'] }}
+
+          {% endfor %}
+
 
           {% if record %}
 

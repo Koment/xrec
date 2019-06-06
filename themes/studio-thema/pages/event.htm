@@ -46,7 +46,7 @@ notFoundMessage = "Record not found"
 
                                   {% for tag in record.tags %}
 
-                                    <li><a href="#" class="musica-button-two">{{ tag.name }}</a></li>
+                                    <li><a href="/tags/{{ tag.slug }}" class="musica-button-two">{{ tag.name }}</a></li>
 
                                   {% endfor %}
 

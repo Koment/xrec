@@ -1,12 +1,12 @@
 fields:
-    tag:
-        label: Tag
+    name:
+        label: Name
         span: auto
         type: text
     slug:
         label: Slug
         span: auto
         preset:
-            field: tag
+            field: name
             type: slug
         type: text
