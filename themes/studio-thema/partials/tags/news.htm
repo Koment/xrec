@@ -1,0 +1,34 @@
+<div class="section-heading text-center">
+
+    <h2>Новости</h2>
+
+</div>
+
+<div class="row row-eq-height">
+
+{% for record in records %}
+
+  <div class="col-md-4">
+
+    <div class="item-preview mb-5" style="background: url('{{ record.featured_images[0].path }}'); background-position: center; background-repeat: no-repeat; background-size: cover; overflow: hidden; height: 100%; border-radius: 10px;">
+
+    <a href="{{ record.url }}">
+      <div style="height: 50%; ">
+        <div class="post-date base-gradient-bg">
+            {{ record.published_at|date('d / m, Y') }}
+        </div>
+      </div>
+
+      <div style="height: 50%; background: rgba(29, 27, 27, 0.9); padding: 10px 20px;">
+        <div class="item-preview-title"><h3>{{ record.title }}</h3></div>
+        <div class="item-preview-description">{{ record.summary|raw }}</div>
+      </div>
+    </a>
+    </div>
+  </div>
+
+    {% else %}
+        <li class="no-data">{{ blogPosts.noPostsMessage }}</li>
+    {% endfor %}
+
+</div>

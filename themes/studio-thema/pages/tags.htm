@@ -12,102 +12,57 @@ function onStart () {
 
     $this['tag'] = Tag::where('slug', $this->param('slug'))->first();
 
-    /*dd($this['tag']);*/
+    $rel = [];
 
-    $this['rel'] = [];
+    foreach ($this['tag']->morphedByMany as $model) {
 
-
-
-    foreach ($this['tag']->morphedByMany as $this['model']) {
-
-      /*dd($this['rel'][$this['model']['model']]);*/
-
-      array_push($this['rel'][$this['model']['model']] = $this['tag']->{$this['model']['model']});
+      $rel[$model['model']] = $this['tag']->{$model['model']};
 
     }
 
-    dd($this['rel']);
+    $this['slug'] = $this->param('slug');
+
+    $this['relaited'] = $rel;
+
+    /*dd($this['relaited']);*/
 
 }
 
-
-
-
 ==
-
-
-
-
 
 {% partial 'sections/banner.htm' %}
 
 <div class="main-content pdt40 pdb90">
     <div class="container">
-        <div class="row row-eq-height">
-
-          {% for model in tag.morphedByMany %}
-
-          {{ model['model'] }}
-
-          {{ tag.model['model'] }}
-
-          {% endfor %}
 
 
-          {% if record %}
+          {% if relaited %}
 
-            {% for artist in record.artists %}
+              {% for key, data in relaited  %}
 
-                    {# Use spaceless tag to remove spaces inside the A tag. #}
-                    {% spaceless %}
+                {% if data.count %}
 
-              <div class="col-md-4 col-sm-6 col-xs-12">
-                  <div class="album-item">
-                      <a href="/artist/{{ artist.slug }}">
+                  {% set partial = 'tags/' ~ key %}
 
-                          <img src="{{ artist.poster.thumb(350, 300, {'mode':'crop'}) }}" class="img-responsive" alt="record.name">
-                          <div class="overlay base-gradient-bg"></div>
-                          <h3 class="heading">{{artist.name}}</h3>
-                          <span class="sub-heading">
-                            {% for genre in artist.genres %}
+                  {% if partial(partial) %}
 
-                              {{ genre.genre_name }}
+                      {% partial partial records=data %}
 
-                            {% endfor %}
+                  {% else %}
 
-                          </span>
-                      </a>
+                      <p>partial not found</p>
 
-                  </div><!--/.album-item-->
-              </div>
+                  {% endif %}
+
+              {% endif %}
+
+            {% endfor %}
+
+            {% else %}
+                <li class="no-data">{{ noRecordsMessage }}</li>
+
+          {% endif %}
 
 
-              {% endspaceless %}
-
-                {% else %}
-                    <li class="no-data">{{ noRecordsMessage }}</li>
-                {% endfor %}
-
-            {% endif %}
-
-        </div>
     </div>
 </div>
-
-{% if records.lastPage > 1 %}
-    <ul class="pagination">
-        {% if records.currentPage > 1 %}
-            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage-1) }) }}">&larr; Prev</a></li>
-        {% endif %}
-
-        {% for page in 1..records.lastPage %}
-            <li class="{{ records.currentPage == page ? 'active' : null }}">
-                <a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}">{{ page }}</a>
-            </li>
-        {% endfor %}
-
-        {% if records.lastPage > records.currentPage %}
-            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (records.currentPage+1) }) }}">Next &rarr;</a></li>
-        {% endif %}
-    </ul>
-{% endif %}

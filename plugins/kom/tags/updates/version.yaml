@@ -15,3 +15,6 @@
 1.0.6:
     - 'Updated table kom_tags_'
     - builder_table_update_kom_tags_.php
+1.0.7:
+    - 'Updated table kom_tags_'
+    - builder_table_update_kom_tags__2.php

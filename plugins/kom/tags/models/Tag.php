@@ -34,9 +34,9 @@ class Tag extends Model
 
     public $morphedByMany = [
 
-      'events' => ['Kom\Events\Models\Event', 'name' => 'taggable', 'model' => 'events'],
       'artists' => ['Kom\Artists\Models\Artist', 'name' => 'taggable', 'model' => 'artists'],
-      'news' => ['Rainlab\Blog\Models\Post', 'name' => 'taggable', 'model' => 'news']
+      'events' => ['Kom\Events\Models\Event', 'name' => 'taggable', 'model' => 'events'],
+      'news' => ['Rainlab\Blog\Models\Post', 'name' => 'taggable', 'model' => 'news'],
     ];
 
     public function getRelationModel(){

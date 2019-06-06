@@ -1,0 +1,45 @@
+==
+
+function onStart(){
+
+
+
+}
+
+
+==
+
+<div class="section-heading text-center">
+
+    <h2>События</h2>
+
+</div>
+
+<div class="row row-eq-height">
+
+
+  {% for record in records %}
+
+  <div class="pdb80" style="background: url('{{ record.poster.path }}'); width: 100%;">
+    <div class="upcoming-event">
+
+        <div class="fornt-part">
+            <div class="date">{{ record.event_date|date('d / m, Y') }}</div>
+            <div class="singer">{{ record.title }}</div>
+            <div class="venue">{{ record.location }}</div>
+            <div class="detail text-right"><a href="/event/{{ record.slug }}" class="musica-button-two">Подробнее</a></div>
+        </div>
+        <div class="back-part">
+            <div class="event-counter">
+                <div>{{ record.event_date|date('d / m, Y') }} | {{ record.title }} | {{ record.location }}</div>
+                <div class='countdown' data-date="{{ record.event_date[0] }}" data-time="{{ record.event_date[1] }}"></div>
+            </div>
+        </div>
+
+
+    </div><!--/.upcoming-event-->
+  </div>
+
+  {% endfor %}
+
+</div>

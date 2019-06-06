@@ -1,0 +1,40 @@
+<div class="section-heading text-center">
+
+    <h2>Исполнители</h2>
+
+</div>
+
+<div class="row row-eq-height">
+
+{% for record in records %}
+
+          {# Use spaceless tag to remove spaces inside the A tag. #}
+          {% spaceless %}
+
+    <div class="col-md-4 col-sm-6 col-xs-12">
+        <div class="album-item">
+            <a href="/artist/{{ record.slug }}">
+
+
+                <img src="{{ record.poster.thumb(350, 300, {'mode':'crop'}) }}" class="img-responsive" alt="record.name">
+                <div class="overlay base-gradient-bg"></div>
+                <h3 class="heading">{{record.name}}</h3>
+                <span class="sub-heading">
+
+                  {% for genre in record.genres %}
+
+                    {{ genre.genre_name }}
+
+                  {% endfor %}
+
+                </span>
+            </a>
+        </div><!--/.album-item-->
+    </div>
+
+
+    {% endspaceless %}
+
+{% endfor %}
+
+</div>

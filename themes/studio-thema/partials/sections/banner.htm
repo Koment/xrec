@@ -5,7 +5,11 @@
                 <div class="banner-title">
                     <h1>
 
-                      {% if record.name %}
+                      {% if this.page.id == 'tags' %}
+
+                        {{ tag.name }}
+
+                      {% elseif record.name %}
 
                         {{ record.name }}
 
