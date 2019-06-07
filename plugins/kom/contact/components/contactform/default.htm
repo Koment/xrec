@@ -1,7 +1,7 @@
 {% set title = __SELF__.title %}
 {% set upload = __SELF__.upload %}
 <div class="comment-form">
-    <h3 class="heading">{{ title }}</h3>
+    <!-- <h3 class="heading">{{ title }}</h3> -->
     <form id="contact" data-request="onSend" {% if upload == '1' %} enctype="multipart/form-data" data-request-files {% endif %}>
         <div class="row pdt20">
             <div class="single-input">

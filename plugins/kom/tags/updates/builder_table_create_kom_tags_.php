@@ -15,7 +15,7 @@ class BuilderTableCreateKomTags extends Migration
             $table->string('slug');
         });
     }
-    
+
     public function down()
     {
         Schema::dropIfExists('kom_tags_');

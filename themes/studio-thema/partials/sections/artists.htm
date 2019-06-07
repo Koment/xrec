@@ -27,16 +27,13 @@ results = 6
 
 
         <div class="audio-player-area background-overlay">
-            <div class="container">
+            <div class="player-container" style="width: 80%;">
                 <div class="musica-audio-player">
                     <div id="musica-audio-player-container" class="jp-video" role="application" aria-label="media player">
                         <div id="tr-player"></div>
                     	<div class="jp-type-playlist">
                             <div class="audio-table">
-                              <div id="musica-jquery-jplayer" class="jp-jplayer"></div>
-                              <div class="jp-details">
-                                  <div class="jp-title" aria-label="title">&nbsp;</div>
-                              </div><!--/title-->
+
                               <div class="clear"></div>
                                 <div class="jp-controls">
                                     <button class="jp-previous"></button>
@@ -44,15 +41,24 @@ results = 6
                                     <button class="jp-next"></button>
                                     <button class="jp-stop"></button>
                                 </div>
+
+                                <div class="jp-volume-controls">
+                                    <button class="jp-mute"></button>
+                                    <button class="jp-volume-max"></button>
+                                    <div class="jp-volume-bar">
+                                        <div class="jp-volume-bar-value"></div>
+                                    </div>
+                                </div>
+
                                 <div class="jp-toggles">
                                     <button class="jp-repeat">Повторение</button>
                                     <button class="jp-shuffle">Перемешать</button>
                                     <button class="jp-full-screen">На весь экран</button>
                                 </div>
                                 <div class="jp-gui">
-                        			<div class="jp-video-play">
-                        				<button class="jp-video-play-icon"></button>
-                        			</div>
+                          			<div class="jp-video-play">
+                          				<button class="jp-video-play-icon"></button>
+                          			</div>
                         			<div class="jp-interface">
                         				<div class="jp-progress">
                         					<div class="jp-seek-bar">
@@ -65,13 +71,13 @@ results = 6
                         			</div>
 
                         		</div>
-                                <div class="jp-volume-controls">
-                                    <button class="jp-mute"></button>
-                                    <button class="jp-volume-max"></button>
-                                    <div class="jp-volume-bar">
-                                        <div class="jp-volume-bar-value"></div>
-                                    </div>
+
+
+                                <div id="musica-jquery-jplayer" class="jp-jplayer"></div>
+                                <div class="jp-details">
+                                    <div class="jp-title" aria-label="title">&nbsp;</div>
                                 </div>
+                                <!--/title-->
 
 
                             </div>

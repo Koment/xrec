@@ -1,4 +1,4 @@
-<section class="banner-area album-banner">
+<section class="banner-area album-banner" {% if this.page.id == 'svedenie-online' %} style="background: url('{{ 'assets/images/home/mastering.jpg' | theme  }}');" {% endif %}>
     <div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -34,11 +34,11 @@
 
                       {% elseif attribute(record, displayColumn) %}
 
-                        {{ str_studly( attribute(record, displayColumn) ) }}
+                        {{ attribute(record, displayColumn) }}
 
                       {% else %}
 
-                        {{ str_studly( this.page.title ) }}
+                        {{ this.page.title }}
 
                       {% endif %}
 

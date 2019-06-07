@@ -871,6 +871,13 @@ textarea {
 /* -----------------------------------
 ** Audio Palyer
 -------------------------------------*/
+
+.player-container{
+  width: 80%;
+  margin: 0 auto;
+}
+
+
 .audio-player-area {
   position: fixed;
   z-index: 99;
