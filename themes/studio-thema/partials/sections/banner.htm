@@ -9,6 +9,21 @@
 
                         {{ tag.name }}
 
+                      {% elseif this.page.id == '404' %}
+
+                        <div id="container">
+                            <!-- <div class="overlay"></div> -->
+                              <div class="item-title">
+                              <div id="message">
+
+                              </div>
+                              <div class="link-bottom"> <a class="link-icon" href="/">
+                                <i class="icon ion-ios-home"></i> Главная</a>
+                                <a class="link-icon" href="/contact"><i class="icon ion-ios-compose"></i> Связаться с нами</a>
+                              </div>
+                          </div>
+                        </div>
+
                       {% elseif record.name %}
 
                         {{ record.name }}

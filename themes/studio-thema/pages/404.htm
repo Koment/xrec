@@ -1,0 +1,23 @@
+title = 404
+url = "/404"
+layout = "studio-dark"
+description = "Запрашиваемый URL не найден..."
+is_hidden = 0
+==
+<?php
+function onStart(){
+
+  $this->addCss('assets/404/style-flat.css');
+
+  /*$this->addJs('assets/404/jquery-1.12.3.min.js');
+  $this->addJs('assets/404/jquery.easing.min.js');
+  $this->addJs('assets/404/bootstrap.min.js');
+
+  $this->addJs('assets/404/modernizr.js');*/
+
+  $this->addJs('assets/404/main-flat.js');
+
+}
+?>
+==
+{% partial 'sections/banner.htm' %}
