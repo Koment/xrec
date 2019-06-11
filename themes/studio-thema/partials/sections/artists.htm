@@ -40,15 +40,23 @@ results = 6
                                     <button class="jp-play"></button>
                                     <button class="jp-next"></button>
                                     <button class="jp-stop"></button>
+
+                                    <button class="jp-mute"></button>
+
+                                    <div id="musica-jquery-jplayer" class="jp-jplayer">
+                                    </div>
+
+
+
                                 </div>
 
-                                <div class="jp-volume-controls">
+                                <!-- <div class="jp-volume-controls">
                                     <button class="jp-mute"></button>
                                     <button class="jp-volume-max"></button>
                                     <div class="jp-volume-bar">
                                         <div class="jp-volume-bar-value"></div>
                                     </div>
-                                </div>
+                                </div> -->
 
                                 <div class="jp-toggles">
                                     <button class="jp-repeat">Повторение</button>
@@ -56,41 +64,45 @@ results = 6
                                     <button class="jp-full-screen">На весь экран</button>
                                 </div>
                                 <div class="jp-gui">
-                          			<div class="jp-video-play">
-                          				<button class="jp-video-play-icon"></button>
-                          			</div>
-                        			<div class="jp-interface">
-                        				<div class="jp-progress">
-                        					<div class="jp-seek-bar">
-                        						<div class="jp-play-bar"></div>
-                        					</div>
-                        				</div>
-                        				<div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
-                        				<div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
-                                        <button class="audio-playlist" style="color: #fff;">...</button>
-                        			</div>
+                              			<div class="jp-video-play">
+                              				<button class="jp-video-play-icon"></button>
+                              			</div>
+                              			<div class="jp-interface">
+                              				<div class="jp-progress">
+                              					<div class="jp-seek-bar">
 
+                              						<div class="jp-play-bar"></div>
+
+                                          <div class="jp-details">
+                                              <div class="jp-title" aria-label="title">&nbsp;</div>
+                                          </div>
+                                          <!--/title-->
+
+                              					</div>
+
+                                        <button class="audio-playlist" style="color: #fff;">...</button>
+
+                              				</div>
+                              			</div>
+
+                                  <div class="jp-current-time" role="timer" aria-label="time">&nbsp;</div>
+                                  <div class="jp-duration" role="timer" aria-label="duration">&nbsp;</div>
+
+                        		   </div>
+
+                            </div>
+                        		<div class="audio-playlist-wrapper">
+                              <div class="container" id="playlist-wrapper">
+                                  <div class="jp-playlist  nicescroll-active">
+                              			<ul>
+                              				<li>
+                              				</li>
+                              			</ul>
+                              		</div>
+                              </div>
                         		</div>
 
 
-                                <div id="musica-jquery-jplayer" class="jp-jplayer"></div>
-                                <div class="jp-details">
-                                    <div class="jp-title" aria-label="title">&nbsp;</div>
-                                </div>
-                                <!--/title-->
-
-
-                            </div>
-                    		<div class="audio-playlist-wrapper">
-                                <div class="container" id="playlist-wrapper">
-                                    <div class="jp-playlist  nicescroll-active">
-                                			<ul>
-                                				<li>
-                                				</li>
-                                			</ul>
-                                		</div>
-                                </div>
-                    		</div>
                     	</div>
                     </div>
                 </div>
@@ -144,6 +156,22 @@ results = 6
 
               $('.audio-playlist-wrapper').css({"opacity":"0", "bottom":"-100%"});
 
+            }
+
+          });
+
+          $('.jp-mute').click(function(){
+
+            if ($('.jp-mute').attr('class') == 'jp-mute'){
+
+              $(this).addClass("toggle-mute");
+
+            }
+
+            else {
+
+              $(this).removeClass("toggle-mute");
+              
             }
 
           });

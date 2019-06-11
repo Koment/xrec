@@ -887,7 +887,7 @@ textarea {
 }
 
 .audio-player-area.background-overlay {
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.7);
   transition: .5s;
 }
 
@@ -1053,10 +1053,14 @@ textarea {
 }
 
 .musica-audio-player .jp-jplayer {
-  float: left;
+  /* float: left; */
   width: 32px !important;
   height: 32px !important;
   margin-right: 12px;
+  position: absolute;
+  bottom: -32px;
+  left: 210px;
+  /* right: 200px; */
 }
 
 .musica-audio-player .jp-jplayer img {
@@ -1078,7 +1082,7 @@ textarea {
 
 .musica-audio-player .jp-interface .jp-progress {
   float: left;
-  width: calc(100% - 100px);
+  width: calc(100% - 400px);
 }
 
 .musica-audio-player .jp-interface .jp-duration {
@@ -1133,12 +1137,13 @@ textarea {
 }
 
 .musica-audio-player .jp-video .jp-controls {
-  width: 150px;
+  width: 265px;
 }
 
 .musica-audio-player .jp-video .jp-controls button {
   position: relative;
-  margin-top: 3px;
+  /* margin-top: 3px; */
+  margin: 0 15px;
 }
 
 .musica-audio-player .jp-video .jp-controls .jp-play {
